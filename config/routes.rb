@@ -1,16 +1,30 @@
 Rails.application.routes.draw do
-  get "home/index"
   devise_for :users
   
-  # Mockups routes
-  get 'mockups/index'
-  get 'mockups/user_dashboard'
-  get 'mockups/user_profile'
-  get 'mockups/user_settings'
-  get 'mockups/admin_dashboard'
-  get 'mockups/admin_users'
-  get 'mockups/admin_analytics'
-  
+  # Mockups namespace for design mockups
+  namespace :mockups do
+    get "/", to: "pages#index", as: :root
+    
+    # Auth pages
+    get "login", to: "pages#login"
+    get "signup", to: "pages#signup"
+    
+    # Admin pages
+    get "admin/dashboard", to: "pages#admin_dashboard"
+    get "admin/devices", to: "pages#admin_devices"
+    get "admin/devices/:id", to: "pages#admin_device_detail", as: :admin_device_detail
+    get "admin/team", to: "pages#admin_team"
+    get "admin/billing", to: "pages#admin_billing"
+    get "admin/treatments", to: "pages#admin_treatments"
+    
+    # Operator pages
+    get "operator/dashboard", to: "pages#operator_dashboard"
+    get "operator/monitor", to: "pages#operator_monitor"
+    get "operator/new_treatment", to: "pages#operator_new_treatment"
+    get "operator/treatments", to: "pages#operator_treatments"
+    get "operator/treatments/:id", to: "pages#operator_treatment_detail", as: :operator_treatment_detail
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -22,5 +36,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "mockups#index"
+  root "mockups/pages#index"
 end

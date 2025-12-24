@@ -1,0 +1,191 @@
+<% content_for :page_title, "My Treatments" %>
+
+<div class="space-y-6">
+  <!-- Header -->
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">My Treatments</h1>
+      <p class="text-gray-500 mt-1">View your treatment history</p>
+    </div>
+    <button class="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-[#32D9D9] hover:text-[#008B8B] transition-all">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+      </svg>
+      Export
+    </button>
+  </div>
+
+  <!-- Simple Filters -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+    <div class="flex flex-wrap items-center gap-4">
+      <div class="flex-1 min-w-[200px]">
+        <input type="text" placeholder="Search sessions..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent">
+      </div>
+      <div class="w-48">
+        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent">
+          <option>All devices</option>
+          <option>CoreTraQer005</option>
+          <option>CoreTraQer006</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treatments Cards -->
+  <div class="space-y-4">
+    <!-- Treatment 1 - Completed -->
+    <%= link_to mockups_operator_treatment_detail_path(id: 1), class: "block bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:border-[#32D9D9] transition-all" do %>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-sm font-medium text-gray-900">#20251224-143052-001</p>
+            <p class="text-sm text-gray-500">Today, 2:30 PM • CoreTraQer005</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-8">
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Duration</p>
+            <p class="font-semibold text-gray-900">15 min</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Max Temp</p>
+            <p class="font-semibold text-[#32D9D9]">38.9°C</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Patient</p>
+            <p class="font-semibold text-gray-900">Anonymous</p>
+          </div>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700">
+            Completed
+          </span>
+          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Treatment 2 - Warning triggered -->
+    <%= link_to mockups_operator_treatment_detail_path(id: 2), class: "block bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:border-[#32D9D9] transition-all" do %>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-sm font-medium text-gray-900">#20251224-103015-003</p>
+            <p class="text-sm text-gray-500">Today, 10:30 AM • CoreTraQer005</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-8">
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Duration</p>
+            <p class="font-semibold text-gray-900">12 min</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Max Temp</p>
+            <p class="font-semibold text-amber-500">39.2°C</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Patient</p>
+            <p class="font-semibold text-gray-900">J. Martin</p>
+          </div>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700">
+            Completed
+          </span>
+          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Treatment 3 - Aborted -->
+    <%= link_to mockups_operator_treatment_detail_path(id: 3), class: "block bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:border-[#32D9D9] transition-all" do %>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-sm font-medium text-gray-900">#20251223-161230-001</p>
+            <p class="text-sm text-gray-500">Yesterday, 4:12 PM • CoreTraQer006</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-8">
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Duration</p>
+            <p class="font-semibold text-gray-900">8 min</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Max Temp</p>
+            <p class="font-semibold text-red-500">40.1°C</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Patient</p>
+            <p class="font-semibold text-gray-900">Anonymous</p>
+          </div>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-700">
+            Aborted
+          </span>
+          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Treatment 4 -->
+    <%= link_to mockups_operator_treatment_detail_path(id: 4), class: "block bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md hover:border-[#32D9D9] transition-all" do %>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-sm font-medium text-gray-900">#20251223-091045-002</p>
+            <p class="text-sm text-gray-500">Yesterday, 9:10 AM • CoreTraQer005</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-8">
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Duration</p>
+            <p class="font-semibold text-gray-900">18 min</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Max Temp</p>
+            <p class="font-semibold text-[#32D9D9]">38.5°C</p>
+          </div>
+          <div class="text-center">
+            <p class="text-sm text-gray-500">Patient</p>
+            <p class="font-semibold text-gray-900">S. Williams</p>
+          </div>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700">
+            Completed
+          </span>
+          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Load More -->
+  <div class="text-center">
+    <button class="px-6 py-2 border-2 border-gray-200 text-gray-600 font-medium rounded-xl hover:border-[#32D9D9] hover:text-[#008B8B] transition-all">
+      Load More
+    </button>
+  </div>
+</div>

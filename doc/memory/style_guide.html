@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhysioTraq - Style Guide</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Primary Colors - Orange Gradient */
+            --pt-red-orange: #D93611;
+            --pt-orange-dark: #D95F18;
+            --pt-orange: #F2811D;
+            
+            /* Secondary Colors - Turquoise */
+            --pt-turquoise: #32D9D9;
+            --pt-turquoise-light: #7EEAEA;
+            --pt-teal: #008B8B;
+            
+            /* Neutral Colors */
+            --pt-black: #000000;
+            --pt-white: #FFFFFF;
+            --pt-gray-light: #F5F5F5;
+            --pt-gray: #808080;
+            --pt-gray-dark: #333333;
+            
+            /* Alert Colors */
+            --pt-alert-warning: #F59E0B;  /* 39°C */
+            --pt-alert-danger: #EF4444;   /* 40°C+ */
+            --pt-alert-success: #10B981;  /* Normal */
+            --pt-alert-info: #3B82F6;     /* Info */
+        }
+        
+        * {
+            font-family: 'DM Sans', sans-serif;
+        }
+        
+        body {
+            background-color: var(--pt-gray-light);
+        }
+        
+        /* Gradients */
+        .gradient-orange {
+            background: linear-gradient(135deg, var(--pt-red-orange) 0%, var(--pt-orange-dark) 50%, var(--pt-orange) 100%);
+        }
+        
+        .gradient-turquoise {
+            background: linear-gradient(180deg, var(--pt-turquoise) 0%, var(--pt-turquoise-light) 100%);
+        }
+        
+        /* Color utilities */
+        .bg-pt-orange { background-color: var(--pt-orange); }
+        .bg-pt-turquoise { background-color: var(--pt-turquoise); }
+        .bg-pt-teal { background-color: var(--pt-teal); }
+        .text-pt-orange { color: var(--pt-orange); }
+        .text-pt-turquoise { color: var(--pt-turquoise); }
+        .text-pt-teal { color: var(--pt-teal); }
+        
+        /* Card style */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--pt-red-orange) 0%, var(--pt-orange) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(217, 54, 17, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--pt-turquoise);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--pt-teal);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--pt-orange);
+            color: var(--pt-orange);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            background: transparent;
+            transition: all 0.2s;
+        }
+        
+        .btn-outline:hover {
+            background: var(--pt-orange);
+            color: white;
+        }
+        
+        /* Temperature display */
+        .temperature-display {
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--pt-turquoise);
+        }
+        
+        .temperature-display.warning {
+            color: var(--pt-alert-warning);
+        }
+        
+        .temperature-display.danger {
+            color: var(--pt-alert-danger);
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Alert boxes */
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--pt-alert-warning);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--pt-alert-danger);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--pt-alert-success);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Status badges */
+        .badge-online {
+            background: var(--pt-alert-success);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .badge-offline {
+            background: var(--pt-gray);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        /* Navigation */
+        .nav-link {
+            color: var(--pt-gray-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: var(--pt-orange);
+            color: white;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            width: 280px;
+            min-height: 100vh;
+            border-right: 1px solid #e5e7eb;
+        }
+        
+        /* Section divider */
+        .section-title {
+            color: var(--pt-teal);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--pt-turquoise);
+        }
+        
+        /* Form elements */
+        .input-field {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--pt-turquoise);
+            box-shadow: 0 0 0 3px rgba(50, 217, 217, 0.1);
+        }
+        
+        .label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--pt-gray-dark);
+        }
+        
+        /* Toggle switch for temperature unit */
+        .toggle-unit {
+            display: flex;
+            background: #e5e7eb;
+            border-radius: 8px;
+            padding: 4px;
+        }
+        
+        .toggle-unit button {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .toggle-unit button.active {
+            background: var(--pt-orange);
+            color: white;
+        }
+        
+        /* Data table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background: var(--pt-gray-light);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--pt-gray-dark);
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .data-table tr:hover {
+            background: rgba(50, 217, 217, 0.05);
+        }
+        
+        /* Color swatch */
+        .color-swatch {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src="/assets/logo_physiotraq_color.png" alt="PhysioTraq" class="h-10">
+                <span class="text-2xl font-normal">physiotraq</span>
+            </div>
+            <p class="text-sm text-gray-500">Style Guide v1.0</p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        
+        <!-- LOGOS -->
+        <section class="mb-16">
+            <h2 class="section-title">Logo Variants</h2>
+            <p class="text-gray-600 mb-8">Use the appropriate logo variant based on background color and context.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card p-8 text-center">
+                    <img src="/assets/logo_physiotraq_and_name_color_bwhite_background.png" alt="Logo Color on White" class="h-24 mx-auto mb-4">
+                    <p class="text-sm text-gray-500">Color on White Background</p>
+                    <p class="text-xs text-gray-400">Primary usage</p>
+                </div>
+                <div class="card p-8 text-center bg-black">
+                    <img src="/assets/logo_physiotraq_and_name_color_black_background.png" alt="Logo Color on Black" class="h-24 mx-auto mb-4">
+                    <p class="text-sm text-gray-400">Color on Dark Background</p>
+                    <p class="text-xs text-gray-500">For dark themes</p>
+                </div>
+                <div class="card p-8 text-center">
+                    <img src="/assets/logo_physiotraq_and_name_rectangular_white_background.png" alt="Logo Horizontal" class="h-16 mx-auto mb-4">
+                    <p class="text-sm text-gray-500">Horizontal Layout</p>
+                    <p class="text-xs text-gray-400">For headers</p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div class="card p-8 text-center">
+                    <img src="/assets/logo_physiotraq_black_white_background.png" alt="Logo Mono Black" class="h-20 mx-auto mb-4">
+                    <p class="text-sm text-gray-500">Monochrome Black</p>
+                    <p class="text-xs text-gray-400">For print & embroidery</p>
+                </div>
+                <div class="card p-8 text-center bg-black">
+                    <img src="/assets/logo_physiotraq_white_black_background.png" alt="Logo Mono White" class="h-20 mx-auto mb-4">
+                    <p class="text-sm text-gray-400">Monochrome White</p>
+                    <p class="text-xs text-gray-500">For dark print</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLOR PALETTE -->
+        <section class="mb-16">
+            <h2 class="section-title">Color Palette</h2>
+            
+            <h3 class="font-bold text-lg mb-4">Primary Colors (Orange Gradient)</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                <div class="color-swatch">
+                    <div class="h-24" style="background: #D93611"></div>
+                    <div class="bg-white p-4">
+                        <p class="font-medium">Red Orange</p>
+                        <p class="text-sm text-gray-500">#D93611</p>
+                        <p class="text-xs text-gray-400">RGB 217/54/17</p>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="h-24" style="background: #D95F18"></div>
+                    <div class="bg-white p-4">
+                        <p class="font-medium">Orange Dark</p>
+                        <p class="text-sm text-gray-500">#D95F18</p>
+                        <p class="text-xs text-gray-400">RGB 217/95/24</p>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="h-24" style="background: #F2811D"></div>
+                    <div class="bg-white p-4">
+                        <p class="font-medium">Orange</p>
+                        <p class="text-sm text-gray-500">#F2811D</p>
+                        <p class="text-xs text-gray-400">RGB 242/129/29</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="font-bold text-lg mb-4">Secondary Colors (Turquoise)</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                <div class="color-swatch">
+                    <div class="h-24" style="background: #32D9D9"></div>
+                    <div class="bg-white p-4">
+                        <p class="font-medium">Turquoise</p>
+                        <p class="text-sm text-gray-500">#32D9D9</p>
+                        <p class="text-xs text-gray-400">RGB 50/217/217</p>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="h-24" style="background: #7EEAEA"></div>
+                    <div class="bg-white p-4">
+                        <p class="font-medium">Turquoise Light</p>
+                        <p class="text-sm text-gray-500">#7EEAEA</p>
+                        <p class="text-xs text-gray-400">RGB 126/234/234</p>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="h-24" style="background: #008B8B"></div>
+                    <div class="bg-white p-4">
+                        <p class="font-medium">Teal</p>
+                        <p class="text-sm text-gray-500">#008B8B</p>
+                        <p class="text-xs text-gray-400">RGB 0/139/139</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="font-bold text-lg mb-4">Alert Colors</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="color-swatch">
+                    <div class="h-16" style="background: #10B981"></div>
+                    <div class="bg-white p-3">
+                        <p class="font-medium text-sm">Success / Normal</p>
+                        <p class="text-xs text-gray-500">#10B981</p>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="h-16" style="background: #F59E0B"></div>
+                    <div class="bg-white p-3">
+                        <p class="font-medium text-sm">Warning (39°C)</p>
+                        <p class="text-xs text-gray-500">#F59E0B</p>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="h-16" style="background: #EF4444"></div>
+                    <div class="bg-white p-3">
+                        <p class="font-medium text-sm">Danger (40°C+)</p>
+                        <p class="text-xs text-gray-500">#EF4444</p>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="h-16" style="background: #3B82F6"></div>
+                    <div class="bg-white p-3">
+                        <p class="font-medium text-sm">Info</p>
+                        <p class="text-xs text-gray-500">#3B82F6</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TYPOGRAPHY -->
+        <section class="mb-16">
+            <h2 class="section-title">Typography</h2>
+            
+            <div class="card p-8 mb-6">
+                <p class="text-sm text-gray-500 mb-2">Primary Font</p>
+                <p class="text-6xl mb-4">Aa</p>
+                <p class="text-xl font-medium mb-2">DM Sans</p>
+                <p class="text-lg">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                <p class="text-lg">abcdefghijklmnopqrstuvwxyz</p>
+                <p class="text-lg">0123456789</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6">
+                    <p class="text-sm text-gray-500 mb-4">Font Weights</p>
+                    <p class="text-2xl font-light mb-2">Light (300)</p>
+                    <p class="text-2xl font-normal mb-2">Regular (400)</p>
+                    <p class="text-2xl font-medium mb-2">Medium (500)</p>
+                    <p class="text-2xl font-bold">Bold (700)</p>
+                </div>
+                <div class="card p-6">
+                    <p class="text-sm text-gray-500 mb-4">Type Scale</p>
+                    <p class="text-4xl mb-2">Heading 1 (36px)</p>
+                    <p class="text-2xl mb-2">Heading 2 (24px)</p>
+                    <p class="text-xl mb-2">Heading 3 (20px)</p>
+                    <p class="text-base mb-2">Body (16px)</p>
+                    <p class="text-sm">Small (14px)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUTTONS -->
+        <section class="mb-16">
+            <h2 class="section-title">Buttons</h2>
+            
+            <div class="card p-8">
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <button class="btn-primary">Primary Button</button>
+                    <button class="btn-secondary">Secondary Button</button>
+                    <button class="btn-outline">Outline Button</button>
+                </div>
+                
+                <div class="flex flex-wrap gap-4">
+                    <button class="btn-primary opacity-50 cursor-not-allowed">Disabled</button>
+                    <button class="btn-primary text-sm py-2 px-4">Small</button>
+                    <button class="btn-primary text-lg py-4 px-8">Large</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMPERATURE DISPLAY -->
+        <section class="mb-16">
+            <h2 class="section-title">Temperature Display</h2>
+            <p class="text-gray-600 mb-8">Large, clear temperature readings for medical monitoring. Color indicates status.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card p-8 text-center">
+                    <p class="temperature-display">37.2°</p>
+                    <p class="text-lg text-gray-500 mt-2">Normal Range</p>
+                    <span class="badge-online">SAFE</span>
+                </div>
+                <div class="card p-8 text-center">
+                    <p class="temperature-display warning">39.1°</p>
+                    <p class="text-lg text-gray-500 mt-2">Warning Threshold</p>
+                    <span class="inline-block bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">WARNING</span>
+                </div>
+                <div class="card p-8 text-center">
+                    <p class="temperature-display danger">40.3°</p>
+                    <p class="text-lg text-gray-500 mt-2">Danger Zone</p>
+                    <span class="inline-block bg-red-500 text-white px-3 py-1 rounded-full text-sm">DANGER</span>
+                </div>
+            </div>
+            
+            <div class="card p-6 mt-6">
+                <p class="text-sm text-gray-500 mb-4">Unit Toggle</p>
+                <div class="toggle-unit inline-flex">
+                    <button class="active">°C</button>
+                    <button>°F</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALERTS -->
+        <section class="mb-16">
+            <h2 class="section-title">Alert Messages</h2>
+            
+            <div class="space-y-4">
+                <div class="alert-success">
+                    <p class="font-medium">✓ Treatment completed successfully</p>
+                    <p class="text-sm text-gray-600">Duration: 15 minutes | Max temp: 38.2°C</p>
+                </div>
+                <div class="alert-warning">
+                    <p class="font-medium">⚠ Temperature approaching 39°C</p>
+                    <p class="text-sm text-gray-600">Current: 38.8°C - Monitor closely</p>
+                </div>
+                <div class="alert-danger">
+                    <p class="font-medium">🔴 CRITICAL: Temperature exceeds 40°C</p>
+                    <p class="text-sm text-gray-600">Immediate action required!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMS -->
+        <section class="mb-16">
+            <h2 class="section-title">Form Elements</h2>
+            
+            <div class="card p-8 max-w-lg">
+                <div class="mb-4">
+                    <label class="label">Patient Name (Optional)</label>
+                    <input type="text" class="input-field" placeholder="Enter patient name or leave blank">
+                </div>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="label">Age</label>
+                        <input type="number" class="input-field" placeholder="Age">
+                    </div>
+                    <div>
+                        <label class="label">Weight (kg)</label>
+                        <input type="number" class="input-field" placeholder="Weight">
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="label">Sex</label>
+                    <select class="input-field">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" class="w-5 h-5 text-orange-500 rounded">
+                        <span>Anonymize session (generate random ID)</span>
+                    </label>
+                </div>
+                <button class="btn-primary w-full">Start Treatment</button>
+            </div>
+        </section>
+
+        <!-- STATUS BADGES -->
+        <section class="mb-16">
+            <h2 class="section-title">Status Badges</h2>
+            
+            <div class="card p-8">
+                <div class="flex flex-wrap gap-4">
+                    <span class="badge-online">● Online</span>
+                    <span class="badge-offline">● Offline</span>
+                    <span class="inline-block bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">Connecting...</span>
+                    <span class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm">In Progress</span>
+                    <span class="inline-block bg-green-500 text-white px-3 py-1 rounded-full text-sm">Completed</span>
+                    <span class="inline-block bg-red-500 text-white px-3 py-1 rounded-full text-sm">Aborted</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATA TABLE -->
+        <section class="mb-16">
+            <h2 class="section-title">Data Tables</h2>
+            
+            <div class="card overflow-hidden">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Device Name</th>
+                            <th>Serial Number</th>
+                            <th>Status</th>
+                            <th>Last Seen</th>
+                            <th>Temperature</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium">CoreTraQer005</td>
+                            <td class="text-gray-500">PT-2025-00123</td>
+                            <td><span class="badge-online">● Online</span></td>
+                            <td class="text-gray-500">Just now</td>
+                            <td class="text-turquoise font-bold">37.8°C</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">CoreTraQer006</td>
+                            <td class="text-gray-500">PT-2025-00124</td>
+                            <td><span class="badge-offline">● Offline</span></td>
+                            <td class="text-gray-500">2 hours ago</td>
+                            <td class="text-gray-400">—</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium">CoreTraQer007</td>
+                            <td class="text-gray-500">PT-2025-00125</td>
+                            <td><span class="badge-online">● Online</span></td>
+                            <td class="text-gray-500">Just now</td>
+                            <td class="text-yellow-500 font-bold">39.1°C ⚠</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- CARDS -->
+        <section class="mb-16">
+            <h2 class="section-title">Cards</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-lg">Active Devices</h3>
+                        <span class="text-3xl font-bold text-pt-turquoise">12</span>
+                    </div>
+                    <p class="text-sm text-gray-500">3 currently in use</p>
+                </div>
+                <div class="card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-lg">Treatments Today</h3>
+                        <span class="text-3xl font-bold text-pt-orange">8</span>
+                    </div>
+                    <p class="text-sm text-gray-500">2 in progress</p>
+                </div>
+                <div class="card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-lg">License Status</h3>
+                        <span class="badge-online">Active</span>
+                    </div>
+                    <p class="text-sm text-gray-500">Expires in 45 days</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAYOFF -->
+        <section class="mb-16">
+            <h2 class="section-title">Brand Payoff</h2>
+            
+            <div class="card p-8 text-center">
+                <p class="text-3xl font-normal mb-2">physiotraq</p>
+                <p class="text-sm tracking-widest text-gray-500 font-light">AT THE CORE OF HUMAN CARE</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm text-gray-500">PhysioTraq Style Guide • Based on Brand Manual by SAPERI & CO.</p>
+            <p class="text-xs text-gray-400 mt-2">Font: DM Sans • Colors: Orange Gradient + Turquoise</p>
+        </div>
+    </footer>
+
+</body>
+</html>

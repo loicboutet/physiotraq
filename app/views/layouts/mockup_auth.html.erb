@@ -10,9 +10,6 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -22,19 +19,39 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     
     <style>
+      :root {
+        --pt-red-orange: #D93611;
+        --pt-orange-dark: #D95F18;
+        --pt-orange: #F2811D;
+        --pt-turquoise: #32D9D9;
+        --pt-turquoise-light: #7EEAEA;
+        --pt-teal: #008B8B;
+      }
+      
       * {
         font-family: 'DM Sans', sans-serif;
+      }
+      
+      .gradient-orange {
+        background: linear-gradient(135deg, var(--pt-red-orange) 0%, var(--pt-orange-dark) 50%, var(--pt-orange) 100%);
+      }
+      
+      .btn-primary {
+        background: linear-gradient(135deg, var(--pt-red-orange) 0%, var(--pt-orange) 100%);
+      }
+      
+      .btn-primary:hover {
+        box-shadow: 0 4px 12px rgba(217, 54, 17, 0.4);
       }
     </style>
   </head>
 
-  <body class="bg-gray-50">
+  <body class="min-h-screen bg-gray-50">
     <%= yield %>
   </body>
 </html>

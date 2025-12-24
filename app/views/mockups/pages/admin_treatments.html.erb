@@ -1,0 +1,208 @@
+<% content_for :page_title, "Treatments History" %>
+
+<div class="space-y-6">
+  <!-- Header -->
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">Treatments History</h1>
+      <p class="text-gray-500 mt-1">All treatments across your organization</p>
+    </div>
+    <button class="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-gray-200 text-gray-700 font-medium rounded-xl hover:border-[#32D9D9] hover:text-[#008B8B] transition-all">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+      </svg>
+      Export
+    </button>
+  </div>
+
+  <!-- Filters -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+    <div class="flex flex-wrap items-center gap-4">
+      <div class="flex-1 min-w-[200px]">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Date Range</label>
+        <input type="text" placeholder="Last 30 days" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent">
+      </div>
+      <div class="w-48">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Device</label>
+        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent">
+          <option>All devices</option>
+          <option>CoreTraQer005</option>
+          <option>CoreTraQer006</option>
+          <option>CoreTraQer007</option>
+        </select>
+      </div>
+      <div class="w-48">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Operator</label>
+        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent">
+          <option>All operators</option>
+          <option>John Doe</option>
+          <option>Jane Smith</option>
+        </select>
+      </div>
+      <div class="w-40">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent">
+          <option>All</option>
+          <option>Completed</option>
+          <option>Aborted</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treatments Table -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <table class="w-full">
+      <thead class="bg-gray-50 border-b border-gray-100">
+        <tr>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Session</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Patient</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Device</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Operator</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Duration</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Max Temp</th>
+          <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+          <th class="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        <!-- Row 1 -->
+        <tr class="hover:bg-gray-50">
+          <td class="px-6 py-4">
+            <div>
+              <p class="font-mono text-sm text-gray-900">#20251224-143052</p>
+              <p class="text-xs text-gray-500">Today, 2:30 PM</p>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-gray-900">Anonymous</td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">CoreTraQer005</span>
+          </td>
+          <td class="px-6 py-4 text-gray-900">John Doe</td>
+          <td class="px-6 py-4 text-gray-900">15 min</td>
+          <td class="px-6 py-4">
+            <span class="font-medium text-[#32D9D9]">38.9°C</span>
+          </td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">Completed</span>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <%= link_to mockups_operator_treatment_detail_path(id: 1), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium" do %>View<% end %>
+          </td>
+        </tr>
+
+        <!-- Row 2 -->
+        <tr class="hover:bg-gray-50">
+          <td class="px-6 py-4">
+            <div>
+              <p class="font-mono text-sm text-gray-900">#20251224-103015</p>
+              <p class="text-xs text-gray-500">Today, 10:30 AM</p>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-gray-900">J. Martin, 45M</td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">CoreTraQer005</span>
+          </td>
+          <td class="px-6 py-4 text-gray-900">John Doe</td>
+          <td class="px-6 py-4 text-gray-900">12 min</td>
+          <td class="px-6 py-4">
+            <span class="font-medium text-amber-500">39.2°C</span>
+          </td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">Completed</span>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <%= link_to mockups_operator_treatment_detail_path(id: 2), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium" do %>View<% end %>
+          </td>
+        </tr>
+
+        <!-- Row 3 - Aborted -->
+        <tr class="hover:bg-gray-50">
+          <td class="px-6 py-4">
+            <div>
+              <p class="font-mono text-sm text-gray-900">#20251223-161230</p>
+              <p class="text-xs text-gray-500">Yesterday, 4:12 PM</p>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-gray-900">Anonymous</td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">CoreTraQer006</span>
+          </td>
+          <td class="px-6 py-4 text-gray-900">Jane Smith</td>
+          <td class="px-6 py-4 text-gray-900">8 min</td>
+          <td class="px-6 py-4">
+            <span class="font-medium text-red-500">40.1°C</span>
+          </td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">Aborted</span>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <%= link_to mockups_operator_treatment_detail_path(id: 3), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium" do %>View<% end %>
+          </td>
+        </tr>
+
+        <!-- Row 4 -->
+        <tr class="hover:bg-gray-50">
+          <td class="px-6 py-4">
+            <div>
+              <p class="font-mono text-sm text-gray-900">#20251223-091045</p>
+              <p class="text-xs text-gray-500">Yesterday, 9:10 AM</p>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-gray-900">S. Williams, 32F</td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">CoreTraQer005</span>
+          </td>
+          <td class="px-6 py-4 text-gray-900">John Doe</td>
+          <td class="px-6 py-4 text-gray-900">18 min</td>
+          <td class="px-6 py-4">
+            <span class="font-medium text-[#32D9D9]">38.5°C</span>
+          </td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">Completed</span>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <%= link_to mockups_operator_treatment_detail_path(id: 4), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium" do %>View<% end %>
+          </td>
+        </tr>
+
+        <!-- Row 5 -->
+        <tr class="hover:bg-gray-50">
+          <td class="px-6 py-4">
+            <div>
+              <p class="font-mono text-sm text-gray-900">#20251222-143522</p>
+              <p class="text-xs text-gray-500">Dec 22, 2:35 PM</p>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-gray-900">Anonymous</td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">CoreTraQer006</span>
+          </td>
+          <td class="px-6 py-4 text-gray-900">Jane Smith</td>
+          <td class="px-6 py-4 text-gray-900">14 min</td>
+          <td class="px-6 py-4">
+            <span class="font-medium text-[#32D9D9]">38.7°C</span>
+          </td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">Completed</span>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <%= link_to mockups_operator_treatment_detail_path(id: 5), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium" do %>View<% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="px-6 py-4 border-t border-gray-100 flex items-center justify-between">
+      <p class="text-sm text-gray-500">Showing 1-5 of 42 treatments</p>
+      <div class="flex items-center gap-2">
+        <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50" disabled>Previous</button>
+        <button class="px-3 py-1 rounded bg-[#32D9D9] text-white">1</button>
+        <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">2</button>
+        <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">3</button>
+        <button class="px-3 py-1 rounded border border-gray-300 text-gray-700 hover:bg-gray-50">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,203 @@
+<% content_for :page_title, "New Treatment" %>
+
+<div class="max-w-3xl mx-auto">
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div class="px-8 py-6 border-b border-gray-100 bg-gradient-to-r from-[#D93611] to-[#F2811D]">
+      <h2 class="text-xl font-bold text-white">Start New Treatment</h2>
+      <p class="text-white/80 mt-1">Select a device and enter patient information</p>
+    </div>
+
+    <form class="p-8 space-y-8">
+      <!-- Section: Select Device -->
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-full bg-[#E8F5F5] text-[#008B8B] flex items-center justify-center text-sm font-bold">1</span>
+          Select Device
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Device 1 - Selected -->
+          <label class="relative cursor-pointer">
+            <input type="radio" name="device" value="1" class="sr-only peer" checked>
+            <div class="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-[#32D9D9] peer-checked:bg-[#E8F5F5] transition-all">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#D93611] to-[#F2811D] flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-gray-900">CoreTraQer005</p>
+                    <p class="text-sm text-gray-500">PT-2025-00123</p>
+                  </div>
+                </div>
+                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                  <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1"></span>
+                  Online
+                </span>
+              </div>
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span>Battery: 74%</span>
+                <span>WiFi: Good</span>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 hidden peer-checked:block">
+              <svg class="w-6 h-6 text-[#32D9D9]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+          </label>
+
+          <!-- Device 2 -->
+          <label class="relative cursor-pointer">
+            <input type="radio" name="device" value="2" class="sr-only peer">
+            <div class="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-[#32D9D9] peer-checked:bg-[#E8F5F5] transition-all">
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#D93611] to-[#F2811D] flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-gray-900">CoreTraQer006</p>
+                    <p class="text-sm text-gray-500">PT-2025-00124</p>
+                  </div>
+                </div>
+                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                  <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1"></span>
+                  Online
+                </span>
+              </div>
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span>Battery: 92%</span>
+                <span>WiFi: Excellent</span>
+              </div>
+            </div>
+            <div class="absolute top-4 right-4 hidden peer-checked:block">
+              <svg class="w-6 h-6 text-[#32D9D9]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section: Patient Information -->
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-full bg-[#E8F5F5] text-[#008B8B] flex items-center justify-center text-sm font-bold">2</span>
+          Patient Information
+        </h3>
+
+        <!-- Anonymize toggle -->
+        <div class="mb-6 p-4 bg-gray-50 rounded-xl">
+          <label class="flex items-center justify-between cursor-pointer">
+            <div>
+              <p class="font-medium text-gray-900">Anonymize this session</p>
+              <p class="text-sm text-gray-500">Generate a random session ID instead of patient name</p>
+            </div>
+            <div class="relative">
+              <input type="checkbox" id="anonymize" class="sr-only peer">
+              <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#32D9D9]/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#32D9D9]"></div>
+            </div>
+          </label>
+        </div>
+
+        <!-- Patient fields -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="patient_first_name" class="block text-sm font-medium text-gray-700 mb-2">First name <span class="text-gray-400">(optional)</span></label>
+            <input 
+              type="text" 
+              id="patient_first_name" 
+              name="patient_first_name" 
+              placeholder="Patient first name"
+              class="block w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent transition-all"
+            >
+          </div>
+          <div>
+            <label for="patient_last_name" class="block text-sm font-medium text-gray-700 mb-2">Last name <span class="text-gray-400">(optional)</span></label>
+            <input 
+              type="text" 
+              id="patient_last_name" 
+              name="patient_last_name" 
+              placeholder="Patient last name"
+              class="block w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent transition-all"
+            >
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mt-4">
+          <div>
+            <label for="patient_age" class="block text-sm font-medium text-gray-700 mb-2">Age</label>
+            <input 
+              type="number" 
+              id="patient_age" 
+              name="patient_age" 
+              placeholder="Age"
+              class="block w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent transition-all"
+            >
+          </div>
+          <div>
+            <label for="patient_sex" class="block text-sm font-medium text-gray-700 mb-2">Sex</label>
+            <select 
+              id="patient_sex" 
+              name="patient_sex" 
+              class="block w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent transition-all"
+            >
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="patient_weight" class="block text-sm font-medium text-gray-700 mb-2">Weight (kg)</label>
+            <input 
+              type="number" 
+              id="patient_weight" 
+              name="patient_weight" 
+              placeholder="kg"
+              class="block w-full px-4 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#32D9D9] focus:border-transparent transition-all"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Preferences -->
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="w-8 h-8 rounded-full bg-[#E8F5F5] text-[#008B8B] flex items-center justify-center text-sm font-bold">3</span>
+          Display Preferences
+        </h3>
+
+        <div class="flex items-center gap-4">
+          <span class="text-sm font-medium text-gray-700">Temperature Unit:</span>
+          <div class="inline-flex items-center bg-gray-100 rounded-lg p-1">
+            <button type="button" class="px-4 py-2 rounded-md text-sm font-medium bg-[#32D9D9] text-white">°C</button>
+            <button type="button" class="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:bg-gray-200">°F</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="pt-6 border-t border-gray-100">
+        <button 
+          type="submit" 
+          class="w-full py-4 px-6 bg-gradient-to-r from-[#D93611] to-[#F2811D] text-white font-bold text-lg rounded-xl hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-3"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Start Treatment
+        </button>
+        <p class="text-center text-sm text-gray-500 mt-4">
+          Monitoring will begin immediately after clicking Start
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

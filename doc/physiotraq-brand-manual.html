@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physiotraq - Brand Manual</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pt-teal: #008B8B;
+            --pt-turquoise: #32D9D9;
+            --pt-turquoise-light: #7EEAEA;
+            --pt-orange: #F2811D;
+            --pt-orange-dark: #D95F18;
+            --pt-red-orange: #D93611;
+            --pt-black: #000000;
+            --pt-white: #FFFFFF;
+            --pt-gray: #F5F5F5;
+        }
+        
+        * {
+            font-family: 'DM Sans', sans-serif;
+        }
+        
+        .bg-pt-teal { background-color: var(--pt-teal); }
+        .bg-pt-turquoise { background-color: var(--pt-turquoise); }
+        .bg-pt-orange { background-color: var(--pt-orange); }
+        .bg-pt-orange-dark { background-color: var(--pt-orange-dark); }
+        .bg-pt-red-orange { background-color: var(--pt-red-orange); }
+        .text-pt-teal { color: var(--pt-teal); }
+        .text-pt-turquoise { color: var(--pt-turquoise); }
+        .text-pt-orange { color: var(--pt-orange); }
+        
+        .gradient-orange {
+            background: linear-gradient(135deg, #D93611 0%, #D95F18 30%, #F2811D 100%);
+        }
+        
+        .gradient-turquoise {
+            background: linear-gradient(180deg, #32D9D9 0%, #7EEAEA 100%);
+        }
+        
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--pt-teal);
+        }
+        
+        .section {
+            scroll-margin-top: 80px;
+        }
+        
+        .color-swatch {
+            transition: transform 0.3s ease;
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.05);
+        }
+
+        /* Logo SVG styles */
+        .logo-pittogramma {
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 280px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            overflow-y: auto;
+            z-index: 50;
+        }
+
+        .main-content {
+            margin-left: 280px;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar p-6">
+        <div class="mb-8">
+            <!-- Logo horizontal -->
+            <svg viewBox="0 0 200 50" class="w-full h-auto">
+                <defs>
+                    <linearGradient id="orangeGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#D93611"/>
+                        <stop offset="50%" style="stop-color:#D95F18"/>
+                        <stop offset="100%" style="stop-color:#F2811D"/>
+                    </linearGradient>
+                    <linearGradient id="turquoiseGradNav" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#32D9D9"/>
+                        <stop offset="100%" style="stop-color:#7EEAEA"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="25" cy="25" r="20" fill="url(#orangeGradNav)"/>
+                <circle cx="22" cy="22" r="6" fill="url(#turquoiseGradNav)"/>
+                <rect x="24" y="26" width="6" height="18" rx="3" fill="url(#turquoiseGradNav)" transform="rotate(45 27 35)"/>
+                <text x="55" y="32" font-family="DM Sans" font-size="18" fill="#000">physiotraq</text>
+            </svg>
+        </div>
+        
+        <div class="space-y-1">
+            <p class="text-xs font-medium text-gray-400 uppercase tracking-wider mb-3">Indice</p>
+            <a href="#intro" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Introduzione</a>
+            <a href="#concept" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Concept</a>
+            <a href="#pittogramma" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Pittogramma</a>
+            <a href="#logotipo" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Logotipo</a>
+            <a href="#payoff" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Payoff</a>
+            <a href="#varianti" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Varianti</a>
+            <a href="#colori" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Varianti cromatiche</a>
+            <a href="#geometria" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Analisi geometrica</a>
+            <a href="#palette" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Palette cromatica</a>
+            <a href="#tipografia" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Carattere tipografico</a>
+            <a href="#utilizzo" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Principi di utilizzo</a>
+            <a href="#esempi" class="nav-link block py-2 px-3 rounded-lg text-gray-600 hover:bg-gray-100">Esempi applicazioni</a>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="text-xs text-gray-400">SAPERI & CO.</p>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <header class="bg-white min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-pt-turquoise rounded-full opacity-30 transform translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-pt-orange rounded-full opacity-20 transform -translate-x-1/2 translate-y-1/2"></div>
+            
+            <div class="text-center z-10 px-8">
+                <!-- Logo principal vertical -->
+                <svg viewBox="0 0 200 220" class="w-64 h-auto mx-auto mb-8 logo-pittogramma">
+                    <defs>
+                        <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#D93611"/>
+                            <stop offset="50%" style="stop-color:#D95F18"/>
+                            <stop offset="100%" style="stop-color:#F2811D"/>
+                        </linearGradient>
+                        <linearGradient id="turquoiseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#32D9D9"/>
+                            <stop offset="100%" style="stop-color:#7EEAEA"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="100" cy="80" r="70" fill="url(#orangeGrad)"/>
+                    <circle cx="85" cy="65" r="20" fill="url(#turquoiseGrad)"/>
+                    <rect x="95" y="85" width="18" height="55" rx="9" fill="url(#turquoiseGrad)" transform="rotate(45 104 112)"/>
+                    <text x="100" y="200" text-anchor="middle" font-family="DM Sans" font-size="28" fill="#000">physiotraq</text>
+                </svg>
+                
+                <h1 class="text-5xl font-bold text-gray-900 mb-4">Brand Manual</h1>
+                <p class="text-pt-teal text-lg tracking-widest uppercase">SAPERI & CO.</p>
+            </div>
+        </header>
+
+        <!-- Introduction -->
+        <section id="intro" class="section py-20 px-8 lg:px-16 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Introduzione</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="font-bold text-xl mb-4">Starting point</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Sono stati analizzati gli input ricevuti nella riunione del 26 settembre 2025 cercando di trovare un crossing point tra le suggestioni proposte dal team e considerazioni di carattere tecnico progettuale.
+                        </p>
+                    </div>
+                    <div class="card p-8 flex items-center justify-center bg-gray-100">
+                        <p class="text-gray-400 text-center text-sm">
+                            [Immagine placeholder: sketch iniziali del logo]<br>
+                            <span class="text-xs">Inserire le proprie immagini</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Concept -->
+        <section id="concept" class="section py-20 px-8 lg:px-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Concept</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Il logo nasce da una riflessione sulle <strong>geometrie elementari</strong>, in particolare il cerchio, forma universale che caratterizza anche il primo prodotto sviluppato dal brand. L'uso di questi <strong>elementi semplici e rigorosi</strong> permette di costruire un'identità visiva essenziale e contemporanea, capace di comunicare con immediatezza il carattere tecnologico del progetto.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Il risultato è un marchio che utilizza forme essenziali per trasmettere <strong>innovazione, controllo e immediatezza</strong>, integrando due universi visivi in un'estetica coerente e minimale, adatta a comunicare in modo trasversale e riconoscibile.
+                        </p>
+                    </div>
+                    <div class="flex justify-center">
+                        <svg viewBox="0 0 200 240" class="w-64 h-auto">
+                            <defs>
+                                <linearGradient id="orangeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#D93611"/>
+                                    <stop offset="50%" style="stop-color:#D95F18"/>
+                                    <stop offset="100%" style="stop-color:#F2811D"/>
+                                </linearGradient>
+                                <linearGradient id="turquoiseGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#32D9D9"/>
+                                    <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="90" r="75" fill="url(#orangeGrad2)"/>
+                            <circle cx="82" cy="72" r="22" fill="url(#turquoiseGrad2)"/>
+                            <rect x="95" y="95" width="20" height="60" rx="10" fill="url(#turquoiseGrad2)" transform="rotate(45 105 125)"/>
+                            <text x="100" y="220" text-anchor="middle" font-family="DM Sans" font-size="26" fill="#000">physiotraq</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pittogramma -->
+        <section id="pittogramma" class="section py-20 px-8 lg:px-16 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Pittogramma</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Il marchio si compone di un <strong>pittogramma</strong> e di un <strong>logotipo</strong>, progettati per funzionare sia insieme sia in applicazioni autonome.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Il pittogramma si basa su un <strong>cerchio geometrico elementare, interrotto da un tratto lineare</strong> che oltrepassa il perimetro generando una forma che <strong>richiama la lettera Q</strong>. Questo elemento introduce un gesto dinamico che <strong>evoca il movimento di un sensore</strong>, la traiettoria di un segnale o il percorso di un dato che viene estratto e reso interpretabile.
+                        </p>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="card p-8 flex flex-col items-center">
+                            <svg viewBox="0 0 150 150" class="w-32 h-32">
+                                <defs>
+                                    <linearGradient id="orangeGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#D93611"/>
+                                        <stop offset="50%" style="stop-color:#D95F18"/>
+                                        <stop offset="100%" style="stop-color:#F2811D"/>
+                                    </linearGradient>
+                                    <linearGradient id="turquoiseGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#32D9D9"/>
+                                        <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="75" cy="70" r="55" fill="url(#orangeGrad3)"/>
+                                <circle cx="60" cy="55" r="16" fill="url(#turquoiseGrad3)"/>
+                                <rect x="70" y="72" width="14" height="45" rx="7" fill="url(#turquoiseGrad3)" transform="rotate(45 77 95)"/>
+                            </svg>
+                            <p class="text-gray-500 text-sm mt-4">Pittogramma</p>
+                        </div>
+                        <div class="card p-8 flex flex-col items-center">
+                            <p class="text-3xl font-normal tracking-tight">physiotraq</p>
+                            <p class="text-gray-500 text-sm mt-4">Logotipo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logotipo -->
+        <section id="logotipo" class="section py-20 px-8 lg:px-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Logotipo</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Il logotipo è costruito a partire da un <strong>carattere tipografico contemporaneo e altamente leggibile</strong>, scelto per <strong>dialogare con la geometria essenziale del pittogramma senza appesantirla</strong>.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Le proporzioni, gli allineamenti e il peso visivo sono stati calibrati per garantire equilibrio tra testo e simbolo. La base tipografica utilizzata è <strong>DM Sans Regular</strong>, opportunamente modificata in alcune lettere per migliorare l'armonia complessiva del marchio.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <div class="card p-12 bg-white">
+                            <p class="text-5xl font-normal tracking-tight">physiotraq</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payoff -->
+        <section id="payoff" class="section py-20 px-8 lg:px-16 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Payoff</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Il payoff, attualmente impiegato come formulazione provvisoria, potrà essere <strong>oggetto di futuri sviluppi</strong> ed evoluzioni in funzione dello sviluppo dell'identità del brand.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            La sua funzione è quella di <strong>supportare il logotipo ampliandone il significato e chiarendo l'ambito valoriale in cui il marchio opera</strong>.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            È integrato direttamente <strong>nel sistema tipografico</strong> del marchio e utilizza lo stesso carattere del logotipo, <strong>DM Sans</strong>, applicato però nel peso <strong>Light</strong> per garantire una corretta gerarchia visiva. È inoltre riportato in <strong>maiuscolo</strong> per assicurare uniformità.
+                        </p>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="card p-8 text-center">
+                            <p class="text-3xl font-normal mb-2">physiotraq</p>
+                            <p class="text-xs tracking-widest text-gray-500 font-light">AT THE CORE OF HUMAN CARE</p>
+                        </div>
+                        <div class="card p-8 flex items-center gap-4">
+                            <svg viewBox="0 0 60 60" class="w-12 h-12 flex-shrink-0">
+                                <defs>
+                                    <linearGradient id="orangeGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#D93611"/>
+                                        <stop offset="50%" style="stop-color:#D95F18"/>
+                                        <stop offset="100%" style="stop-color:#F2811D"/>
+                                    </linearGradient>
+                                    <linearGradient id="turquoiseGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#32D9D9"/>
+                                        <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="30" cy="28" r="22" fill="url(#orangeGrad4)"/>
+                                <circle cx="24" cy="22" r="6" fill="url(#turquoiseGrad4)"/>
+                                <rect x="28" y="30" width="5" height="18" rx="2.5" fill="url(#turquoiseGrad4)" transform="rotate(45 31 39)"/>
+                            </svg>
+                            <div>
+                                <p class="text-xl font-normal">physiotraq</p>
+                                <p class="text-xs tracking-widest text-gray-500 font-light">AT THE CORE OF HUMAN CARE</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Varianti -->
+        <section id="varianti" class="section py-20 px-8 lg:px-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Varianti</h2>
+                <p class="text-gray-600 leading-relaxed mb-12">
+                    Le diverse configurazioni garantiscono la massima <strong>flessibilità d'uso nei vari contesti applicativi</strong>. La <strong>versione verticale</strong> rappresenta la configurazione principale. La <strong>versione orizzontale</strong> offre una soluzione più compatta. Le <strong>versioni monocromatiche</strong> garantiscono la leggibilità in condizioni non compatibili con l'uso del gradiente.
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Versione Verticale -->
+                    <div class="card p-8 text-center">
+                        <p class="text-pt-teal text-sm font-medium mb-6">Versione verticale</p>
+                        <svg viewBox="0 0 150 180" class="w-32 h-auto mx-auto">
+                            <defs>
+                                <linearGradient id="orangeGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#D93611"/>
+                                    <stop offset="50%" style="stop-color:#D95F18"/>
+                                    <stop offset="100%" style="stop-color:#F2811D"/>
+                                </linearGradient>
+                                <linearGradient id="turquoiseGrad5" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#32D9D9"/>
+                                    <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="75" cy="60" r="50" fill="url(#orangeGrad5)"/>
+                            <circle cx="62" cy="47" r="14" fill="url(#turquoiseGrad5)"/>
+                            <rect x="70" y="62" width="12" height="40" rx="6" fill="url(#turquoiseGrad5)" transform="rotate(45 76 82)"/>
+                            <text x="75" y="150" text-anchor="middle" font-family="DM Sans" font-size="16" fill="#000">physiotraq</text>
+                        </svg>
+                    </div>
+                    
+                    <!-- Versione Orizzontale -->
+                    <div class="card p-8 text-center">
+                        <p class="text-pt-teal text-sm font-medium mb-6">Versione orizzontale</p>
+                        <svg viewBox="0 0 200 60" class="w-full h-auto mx-auto mt-12">
+                            <defs>
+                                <linearGradient id="orangeGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#D93611"/>
+                                    <stop offset="50%" style="stop-color:#D95F18"/>
+                                    <stop offset="100%" style="stop-color:#F2811D"/>
+                                </linearGradient>
+                                <linearGradient id="turquoiseGrad6" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#32D9D9"/>
+                                    <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="30" cy="30" r="25" fill="url(#orangeGrad6)"/>
+                            <circle cx="23" cy="23" r="7" fill="url(#turquoiseGrad6)"/>
+                            <rect x="28" y="32" width="6" height="20" rx="3" fill="url(#turquoiseGrad6)" transform="rotate(45 31 42)"/>
+                            <text x="70" y="37" font-family="DM Sans" font-size="20" fill="#000">physiotraq</text>
+                        </svg>
+                    </div>
+                    
+                    <!-- Versioni Monocromatiche -->
+                    <div class="card p-8 text-center">
+                        <p class="text-pt-teal text-sm font-medium mb-6">Versioni monocromatiche</p>
+                        <div class="flex gap-4 justify-center mt-8">
+                            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                                <svg viewBox="0 0 60 75" class="w-12 h-auto">
+                                    <circle cx="30" cy="25" r="20" fill="none" stroke="#000" stroke-width="2"/>
+                                    <circle cx="25" cy="20" r="6" fill="#000"/>
+                                    <rect x="28" y="27" width="5" height="18" rx="2.5" fill="#000" transform="rotate(45 31 36)"/>
+                                    <text x="30" y="65" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#000">physiotraq</text>
+                                </svg>
+                            </div>
+                            <div class="bg-black rounded-lg p-4">
+                                <svg viewBox="0 0 60 75" class="w-12 h-auto">
+                                    <circle cx="30" cy="25" r="20" fill="none" stroke="#fff" stroke-width="2"/>
+                                    <circle cx="25" cy="20" r="6" fill="#fff"/>
+                                    <rect x="28" y="27" width="5" height="18" rx="2.5" fill="#fff" transform="rotate(45 31 36)"/>
+                                    <text x="30" y="65" text-anchor="middle" font-family="DM Sans" font-size="8" fill="#fff">physiotraq</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Varianti Cromatiche -->
+        <section id="colori" class="section py-20 px-8 lg:px-16 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Varianti cromatiche</h2>
+                <p class="text-gray-600 leading-relaxed mb-12">
+                    Per ciascuna configurazione del marchio sono previste varianti cromatiche che ne garantiscono la corretta applicazione in contesti differenti. Il logotipo è disponibile in versione nera o bianca, mentre il pittogramma mantiene invariata la propria identità cromatica.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Su sfondo chiaro -->
+                    <div class="card p-8 bg-white">
+                        <svg viewBox="0 0 200 100" class="w-full h-auto">
+                            <defs>
+                                <linearGradient id="orangeGrad7" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#D93611"/>
+                                    <stop offset="50%" style="stop-color:#D95F18"/>
+                                    <stop offset="100%" style="stop-color:#F2811D"/>
+                                </linearGradient>
+                                <linearGradient id="turquoiseGrad7" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#32D9D9"/>
+                                    <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="35" fill="url(#orangeGrad7)"/>
+                            <circle cx="40" cy="40" r="10" fill="url(#turquoiseGrad7)"/>
+                            <rect x="47" y="53" width="8" height="28" rx="4" fill="url(#turquoiseGrad7)" transform="rotate(45 51 67)"/>
+                            <text x="105" y="57" font-family="DM Sans" font-size="18" fill="#000">physiotraq</text>
+                        </svg>
+                        <p class="text-center text-sm text-gray-500 mt-4">Su sfondo chiaro</p>
+                    </div>
+                    
+                    <!-- Su sfondo scuro -->
+                    <div class="card p-8 bg-black">
+                        <svg viewBox="0 0 200 100" class="w-full h-auto">
+                            <defs>
+                                <linearGradient id="orangeGrad8" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#D93611"/>
+                                    <stop offset="50%" style="stop-color:#D95F18"/>
+                                    <stop offset="100%" style="stop-color:#F2811D"/>
+                                </linearGradient>
+                                <linearGradient id="turquoiseGrad8" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#32D9D9"/>
+                                    <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="35" fill="url(#orangeGrad8)"/>
+                            <circle cx="40" cy="40" r="10" fill="url(#turquoiseGrad8)"/>
+                            <rect x="47" y="53" width="8" height="28" rx="4" fill="url(#turquoiseGrad8)" transform="rotate(45 51 67)"/>
+                            <text x="105" y="57" font-family="DM Sans" font-size="18" fill="#fff">physiotraq</text>
+                        </svg>
+                        <p class="text-center text-sm text-gray-400 mt-4">Su sfondo scuro</p>
+                    </div>
+                </div>
+
+                <!-- Versioni flat per stampa -->
+                <div class="mt-12">
+                    <h3 class="font-bold text-xl mb-6">Variante ottimizzata per la stampa</h3>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Il marchio è disponibile in varianti prive di gradiente cromatico, progettate per la stampa tradizionale, serigrafia, tampografia, incisione e ricamo.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="card p-8 bg-white text-center">
+                            <svg viewBox="0 0 150 180" class="w-32 h-auto mx-auto">
+                                <circle cx="75" cy="60" r="50" fill="#F2811D"/>
+                                <circle cx="62" cy="47" r="14" fill="#32D9D9"/>
+                                <rect x="70" y="62" width="12" height="40" rx="6" fill="#32D9D9" transform="rotate(45 76 82)"/>
+                                <text x="75" y="150" text-anchor="middle" font-family="DM Sans" font-size="16" fill="#000">physiotraq</text>
+                            </svg>
+                            <p class="text-sm text-gray-500 mt-4">Digital application</p>
+                        </div>
+                        <div class="card p-8 bg-white text-center">
+                            <svg viewBox="0 0 150 180" class="w-32 h-auto mx-auto">
+                                <circle cx="75" cy="60" r="50" fill="#F2811D"/>
+                                <circle cx="62" cy="47" r="14" fill="#32D9D9"/>
+                                <rect x="70" y="62" width="12" height="40" rx="6" fill="#32D9D9" transform="rotate(45 76 82)"/>
+                                <text x="75" y="150" text-anchor="middle" font-family="DM Sans" font-size="16" fill="#000">physiotraq</text>
+                            </svg>
+                            <p class="text-sm text-gray-500 mt-4">Printed version</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analisi Geometrica -->
+        <section id="geometria" class="section py-20 px-8 lg:px-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Analisi geometrica</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Il pittogramma è costruito su una <strong>griglia geometrica modulare</strong> che ne determina proporzioni, allineamenti e rapporti interni. La <strong>forma principale è un cerchio</strong>, utilizzato come unità di base per definire sia il perimetro del simbolo sia le relazioni dimensionali tra gli elementi.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            All'interno della struttura, il cerchio centrale e il tratto inclinato — <strong>responsabile dell'evocazione della lettera Q</strong> — sono posizionati seguendo assi, diagonali e suddivisioni ortogonali che garantiscono una corretta distribuzione delle masse.
+                        </p>
+                    </div>
+                    <div class="card p-8 bg-white">
+                        <svg viewBox="0 0 200 240" class="w-full h-auto">
+                            <!-- Grid -->
+                            <line x1="20" y1="20" x2="20" y2="200" stroke="#ccc" stroke-width="0.5"/>
+                            <line x1="100" y1="20" x2="100" y2="200" stroke="#ccc" stroke-width="0.5"/>
+                            <line x1="180" y1="20" x2="180" y2="200" stroke="#ccc" stroke-width="0.5"/>
+                            <line x1="20" y1="20" x2="180" y2="20" stroke="#ccc" stroke-width="0.5"/>
+                            <line x1="20" y1="100" x2="180" y2="100" stroke="#ccc" stroke-width="0.5"/>
+                            <line x1="20" y1="180" x2="180" y2="180" stroke="#ccc" stroke-width="0.5"/>
+                            
+                            <!-- Diagonals -->
+                            <line x1="20" y1="20" x2="180" y2="180" stroke="#ddd" stroke-width="0.5"/>
+                            <line x1="180" y1="20" x2="20" y2="180" stroke="#ddd" stroke-width="0.5"/>
+                            
+                            <!-- Logo with transparency -->
+                            <circle cx="100" cy="90" r="65" fill="#F2811D" fill-opacity="0.7"/>
+                            <circle cx="82" cy="72" r="18" fill="#32D9D9" fill-opacity="0.7"/>
+                            <rect x="93" y="93" width="14" height="48" rx="7" fill="#32D9D9" fill-opacity="0.7" transform="rotate(45 100 117)"/>
+                            
+                            <!-- Construction circles -->
+                            <circle cx="100" cy="90" r="65" fill="none" stroke="#D93611" stroke-width="1" stroke-dasharray="4"/>
+                            <circle cx="82" cy="72" r="18" fill="none" stroke="#32D9D9" stroke-width="1" stroke-dasharray="4"/>
+                            
+                            <!-- Measurements -->
+                            <text x="55" y="15" font-size="10" fill="#666">1</text>
+                            <text x="95" y="15" font-size="10" fill="#666">6</text>
+                            <text x="145" y="15" font-size="10" fill="#666">1</text>
+                            <text x="188" y="55" font-size="10" fill="#666">2</text>
+                            <text x="188" y="95" font-size="10" fill="#666">1</text>
+                            <text x="188" y="135" font-size="10" fill="#666">1</text>
+                            <text x="188" y="175" font-size="10" fill="#666">2</text>
+                            
+                            <text x="100" y="230" text-anchor="middle" font-family="DM Sans" font-size="18" fill="#000">physiotraq</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Palette Cromatica -->
+        <section id="palette" class="section py-20 px-8 lg:px-16 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Palette cromatica</h2>
+                <p class="text-gray-600 leading-relaxed mb-12">
+                    Per garantire una resa cromatica coerente e accurata in tutte le applicazioni del brand dovranno essere utilizzati gli standard: <strong>Pantone (PMS)</strong>, <strong>CMYK</strong>, <strong>RGB</strong>, <strong>HEX</strong>.
+                </p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                    <!-- Rosso-arancio -->
+                    <div class="color-swatch">
+                        <div class="h-32 rounded-t-lg" style="background-color: #D93611;"></div>
+                        <div class="bg-white rounded-b-lg p-4 border border-t-0 border-gray-200">
+                            <p class="font-medium text-sm">Rosso-arancio</p>
+                            <p class="text-xs text-gray-500 mt-1">#D93611</p>
+                            <p class="text-xs text-gray-400">RGB 217/53/17</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Arancione scuro -->
+                    <div class="color-swatch">
+                        <div class="h-32 rounded-t-lg" style="background-color: #D95F18;"></div>
+                        <div class="bg-white rounded-b-lg p-4 border border-t-0 border-gray-200">
+                            <p class="font-medium text-sm">Arancione scuro</p>
+                            <p class="text-xs text-gray-500 mt-1">#D95F18</p>
+                            <p class="text-xs text-gray-400">RGB 217/95/24</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Arancione brillante -->
+                    <div class="color-swatch">
+                        <div class="h-32 rounded-t-lg" style="background-color: #F2811D;"></div>
+                        <div class="bg-white rounded-b-lg p-4 border border-t-0 border-gray-200">
+                            <p class="font-medium text-sm">Arancione brillante</p>
+                            <p class="text-xs text-gray-500 mt-1">#F2811D</p>
+                            <p class="text-xs text-gray-400">RGB 242/129/29</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Turchese chiaro -->
+                    <div class="color-swatch">
+                        <div class="h-32 rounded-t-lg" style="background-color: #32D9D9;"></div>
+                        <div class="bg-white rounded-b-lg p-4 border border-t-0 border-gray-200">
+                            <p class="font-medium text-sm">Turchese chiaro</p>
+                            <p class="text-xs text-gray-500 mt-1">#32D9D9</p>
+                            <p class="text-xs text-gray-400">RGB 50/217/217</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Grigio neutro -->
+                    <div class="color-swatch">
+                        <div class="h-32 rounded-t-lg" style="background-color: #808080;"></div>
+                        <div class="bg-white rounded-b-lg p-4 border border-t-0 border-gray-200">
+                            <p class="font-medium text-sm">Grigio neutro</p>
+                            <p class="text-xs text-gray-500 mt-1">#808080</p>
+                            <p class="text-xs text-gray-400">RGB 128/128/128</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tables -->
+                <div class="mt-12 grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-4">Digital application</h4>
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-3 text-left">Colore</th>
+                                    <th class="p-3 text-left">HEX</th>
+                                    <th class="p-3 text-left">RGB</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b"><td class="p-3">Turchese</td><td class="p-3">#32D9D9</td><td class="p-3">50/217/217</td></tr>
+                                <tr class="border-b"><td class="p-3">Arancione</td><td class="p-3">#F2811D</td><td class="p-3">242/129/29</td></tr>
+                                <tr class="border-b"><td class="p-3">Nero</td><td class="p-3">#000000</td><td class="p-3">0/0/0</td></tr>
+                                <tr><td class="p-3">Bianco</td><td class="p-3">#FFFFFF</td><td class="p-3">255/255/255</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Printed version</h4>
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-3 text-left">Colore</th>
+                                    <th class="p-3 text-left">CMYK</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b"><td class="p-3">Turchese</td><td class="p-3">65/0/15/0</td></tr>
+                                <tr class="border-b"><td class="p-3">Arancione flat</td><td class="p-3">0/60/100/10</td></tr>
+                                <tr class="border-b"><td class="p-3">Nero</td><td class="p-3">0/0/0/100</td></tr>
+                                <tr><td class="p-3">Bianco</td><td class="p-3">0/0/0/0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carattere Tipografico -->
+        <section id="tipografia" class="section py-20 px-8 lg:px-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Carattere tipografico</h2>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="font-bold text-xl mb-4">DM Sans</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Sans-serif geometrico, progettato per garantire chiarezza, leggibilità e un'estetica contemporanea. La sua struttura semplice, con aperture ampie e proporzioni regolari, lo rende adatto sia al logotipo sia agli elementi testuali del sistema.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mt-4">
+                            È stato utilizzato per logotipo e payoff, garantendo coerenza con il linguaggio geometrico del pittogramma e contribuendo a un'identità complessiva moderna, professionale e facilmente scalabile.
+                        </p>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="card p-8">
+                            <p class="text-sm text-gray-500 mb-2">Primary</p>
+                            <p class="text-6xl mb-4">Aa</p>
+                            <p class="font-normal text-lg">DM Sans (regular)</p>
+                            <p class="text-xl mt-2">ABCDEFGHIJKLM</p>
+                            <p class="text-xl">abcdefghiklmopqrz</p>
+                            <p class="text-xl">0123456789</p>
+                        </div>
+                        <div class="card p-8">
+                            <p class="text-sm text-gray-500 mb-2">Secondary</p>
+                            <p class="text-6xl font-light mb-4">Aa</p>
+                            <p class="font-light text-lg">DM Sans (light)</p>
+                            <p class="text-xl font-light mt-2">ABCDEFGHIJKLM</p>
+                            <p class="text-xl font-light">abcdefghiklmopqrz</p>
+                            <p class="text-xl font-light">0123456789</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Principi di Utilizzo -->
+        <section id="utilizzo" class="section py-20 px-8 lg:px-16 bg-white">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Principi generali di utilizzo</h2>
+                
+                <!-- Utilizzi corretti -->
+                <div class="mb-16">
+                    <h3 class="font-bold text-xl mb-6">Utilizzi corretti del logo</h3>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Le regole relative all'uso del logo hanno lo scopo di garantire che esso venga utilizzato sempre allo stesso modo: utilizzare esclusivamente le <strong>varianti ufficiali</strong>, mantenere <strong>proporzioni originali</strong>, garantire sufficiente <strong>contrasto con lo sfondo</strong>, rispettare gli <strong>spazi di rispetto</strong>, usare solo i <strong>colori approvati</strong>.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="card p-6 text-center relative">
+                            <span class="absolute top-2 left-2 text-green-500 text-xl">✓</span>
+                            <svg viewBox="0 0 80 100" class="w-16 h-auto mx-auto">
+                                <circle cx="40" cy="35" r="28" fill="none" stroke="#000" stroke-width="2"/>
+                                <circle cx="33" cy="28" r="8" fill="#000"/>
+                                <rect x="37" y="38" width="6" height="22" rx="3" fill="#000" transform="rotate(45 40 49)"/>
+                                <text x="40" y="85" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#000">physiotraq</text>
+                            </svg>
+                        </div>
+                        <div class="card p-6 text-center relative bg-black">
+                            <span class="absolute top-2 left-2 text-green-500 text-xl">✓</span>
+                            <svg viewBox="0 0 80 100" class="w-16 h-auto mx-auto">
+                                <circle cx="40" cy="35" r="28" fill="none" stroke="#fff" stroke-width="2"/>
+                                <circle cx="33" cy="28" r="8" fill="#fff"/>
+                                <rect x="37" y="38" width="6" height="22" rx="3" fill="#fff" transform="rotate(45 40 49)"/>
+                                <text x="40" y="85" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#fff">physiotraq</text>
+                            </svg>
+                        </div>
+                        <div class="card p-6 text-center relative" style="background-color: #E8F4F4;">
+                            <span class="absolute top-2 left-2 text-green-500 text-xl">✓</span>
+                            <svg viewBox="0 0 80 100" class="w-16 h-auto mx-auto">
+                                <circle cx="40" cy="35" r="28" fill="none" stroke="#000" stroke-width="2"/>
+                                <circle cx="33" cy="28" r="8" fill="#000"/>
+                                <rect x="37" y="38" width="6" height="22" rx="3" fill="#000" transform="rotate(45 40 49)"/>
+                                <text x="40" y="85" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#000">physiotraq</text>
+                            </svg>
+                        </div>
+                        <div class="card p-6 text-center relative">
+                            <span class="absolute top-2 left-2 text-green-500 text-xl">✓</span>
+                            <svg viewBox="0 0 80 100" class="w-16 h-auto mx-auto">
+                                <defs>
+                                    <linearGradient id="og9" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#D93611"/>
+                                        <stop offset="100%" style="stop-color:#F2811D"/>
+                                    </linearGradient>
+                                    <linearGradient id="tg9" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#32D9D9"/>
+                                        <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="40" cy="35" r="28" fill="url(#og9)"/>
+                                <circle cx="33" cy="28" r="8" fill="url(#tg9)"/>
+                                <rect x="37" y="38" width="6" height="22" rx="3" fill="url(#tg9)" transform="rotate(45 40 49)"/>
+                                <text x="40" y="85" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#000">physiotraq</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Utilizzi scorretti -->
+                <div class="mb-16">
+                    <h3 class="font-bold text-xl mb-6">Utilizzi scorretti del logo</h3>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        Non è consentito: utilizzare versioni non ufficiali, alterare le proporzioni o ruotare il logo, applicarlo su sfondi con contrasto insufficiente, non rispettare gli spazi di rispetto, modificare i colori.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="card p-6 text-center relative bg-gray-100">
+                            <span class="absolute top-2 left-2 text-red-500 text-xl">✗</span>
+                            <svg viewBox="0 0 80 100" class="w-16 h-auto mx-auto" style="transform: scaleX(1.5);">
+                                <circle cx="40" cy="35" r="28" fill="none" stroke="#000" stroke-width="2"/>
+                                <circle cx="33" cy="28" r="8" fill="#000"/>
+                                <rect x="37" y="38" width="6" height="22" rx="3" fill="#000" transform="rotate(45 40 49)"/>
+                                <text x="40" y="85" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#000">physiotraq</text>
+                            </svg>
+                            <p class="text-xs text-gray-500 mt-2">Proporzioni alterate</p>
+                        </div>
+                        <div class="card p-6 text-center relative bg-gray-300">
+                            <span class="absolute top-2 left-2 text-red-500 text-xl">✗</span>
+                            <svg viewBox="0 0 80 100" class="w-16 h-auto mx-auto opacity-50">
+                                <circle cx="40" cy="35" r="28" fill="none" stroke="#666" stroke-width="2"/>
+                                <circle cx="33" cy="28" r="8" fill="#666"/>
+                                <rect x="37" y="38" width="6" height="22" rx="3" fill="#666" transform="rotate(45 40 49)"/>
+                                <text x="40" y="85" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#666">physiotraq</text>
+                            </svg>
+                            <p class="text-xs text-gray-500 mt-2">Contrasto insufficiente</p>
+                        </div>
+                        <div class="card p-6 text-center relative">
+                            <span class="absolute top-2 left-2 text-red-500 text-xl">✗</span>
+                            <svg viewBox="0 0 80 100" class="w-16 h-auto mx-auto" style="transform: rotate(30deg);">
+                                <circle cx="40" cy="35" r="28" fill="none" stroke="#000" stroke-width="2"/>
+                                <circle cx="33" cy="28" r="8" fill="#000"/>
+                                <rect x="37" y="38" width="6" height="22" rx="3" fill="#000" transform="rotate(45 40 49)"/>
+                                <text x="40" y="85" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#000">physiotraq</text>
+                            </svg>
+                            <p class="text-xs text-gray-500 mt-2">Logo ruotato</p>
+                        </div>
+                        <div class="card p-6 text-center relative">
+                            <span class="absolute top-2 left-2 text-red-500 text-xl">✗</span>
+                            <svg viewBox="0 0 80 100" class="w-16 h-auto mx-auto">
+                                <circle cx="40" cy="35" r="28" fill="#FF00FF"/>
+                                <circle cx="33" cy="28" r="8" fill="#00FF00"/>
+                                <rect x="37" y="38" width="6" height="22" rx="3" fill="#00FF00" transform="rotate(45 40 49)"/>
+                                <text x="40" y="85" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#000">physiotraq</text>
+                            </svg>
+                            <p class="text-xs text-gray-500 mt-2">Colori non approvati</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Safe Area -->
+                <div>
+                    <h3 class="font-bold text-xl mb-6">Safe area</h3>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        La safe area definisce l'area minima di sicurezza entro la quale il logo deve essere sempre posizionato. Lo spazio libero minimo intorno al logo è definito come <strong>x</strong>, misurato come un 1/9 della dimensione del logo.
+                    </p>
+                    
+                    <div class="card p-8 bg-white inline-block">
+                        <svg viewBox="0 0 200 220" class="w-64 h-auto">
+                            <!-- Safe area box -->
+                            <rect x="10" y="10" width="180" height="200" fill="none" stroke="#ccc" stroke-dasharray="4"/>
+                            
+                            <!-- X measurement indicators -->
+                            <rect x="10" y="10" width="20" height="20" fill="#eee"/>
+                            <text x="20" y="8" font-size="10" fill="#666">X</text>
+                            
+                            <!-- Logo -->
+                            <defs>
+                                <linearGradient id="og10" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#D93611"/>
+                                    <stop offset="100%" style="stop-color:#F2811D"/>
+                                </linearGradient>
+                                <linearGradient id="tg10" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#32D9D9"/>
+                                    <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="80" r="55" fill="url(#og10)"/>
+                            <circle cx="85" cy="65" r="15" fill="url(#tg10)"/>
+                            <rect x="93" y="85" width="12" height="40" rx="6" fill="url(#tg10)" transform="rotate(45 99 105)"/>
+                            <text x="100" y="180" text-anchor="middle" font-family="DM Sans" font-size="18" fill="#000">physiotraq</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Esempi Applicazioni -->
+        <section id="esempi" class="section py-20 px-8 lg:px-16 bg-gray-50">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-pt-teal text-3xl font-bold mb-8">Esempi applicazioni</h2>
+                <p class="text-gray-600 leading-relaxed mb-12">
+                    Qui sono riportati alcuni esempi dell'applicazione del logo in contesti operativi reali.
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- App Icon -->
+                    <div class="card p-8">
+                        <p class="text-pt-teal text-sm font-medium mb-4">Icona app</p>
+                        <div class="bg-gray-100 rounded-2xl p-8 flex items-center justify-center" style="aspect-ratio: 1;">
+                            <svg viewBox="0 0 100 100" class="w-24 h-24">
+                                <defs>
+                                    <linearGradient id="og11" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#D93611"/>
+                                        <stop offset="100%" style="stop-color:#F2811D"/>
+                                    </linearGradient>
+                                    <linearGradient id="tg11" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#32D9D9"/>
+                                        <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect x="0" y="0" width="100" height="100" rx="20" fill="url(#og11)"/>
+                                <circle cx="40" cy="40" r="18" fill="url(#tg11)"/>
+                                <rect x="50" y="50" width="10" height="35" rx="5" fill="url(#tg11)" transform="rotate(45 55 68)"/>
+                            </svg>
+                        </div>
+                        <p class="text-gray-400 text-xs text-center mt-4">[Placeholder: inserire screenshot reale]</p>
+                    </div>
+                    
+                    <!-- App Interface -->
+                    <div class="card p-8">
+                        <p class="text-pt-teal text-sm font-medium mb-4">Interfaccia app</p>
+                        <div class="bg-black rounded-2xl p-6" style="aspect-ratio: 9/16; max-height: 400px;">
+                            <div class="flex items-center gap-3 mb-8">
+                                <svg viewBox="0 0 40 40" class="w-8 h-8">
+                                    <defs>
+                                        <linearGradient id="og12" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#D93611"/>
+                                            <stop offset="100%" style="stop-color:#F2811D"/>
+                                        </linearGradient>
+                                        <linearGradient id="tg12" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#32D9D9"/>
+                                            <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="20" cy="18" r="14" fill="url(#og12)"/>
+                                    <circle cx="16" cy="14" r="4" fill="url(#tg12)"/>
+                                    <rect x="18" y="20" width="4" height="14" rx="2" fill="url(#tg12)" transform="rotate(45 20 27)"/>
+                                </svg>
+                                <span class="text-white text-lg">physiotraq</span>
+                            </div>
+                            <div class="text-white text-sm opacity-70 mt-auto">
+                                The Physiotraq logo communicates brand's story around connectivity.
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs text-center mt-4">[Placeholder: inserire screenshot reale]</p>
+                    </div>
+                    
+                    <!-- Website -->
+                    <div class="card p-8">
+                        <p class="text-pt-teal text-sm font-medium mb-4">Interfaccia sito web</p>
+                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                            <div class="bg-gray-100 p-3 flex items-center gap-4 border-b">
+                                <svg viewBox="0 0 120 30" class="h-6">
+                                    <defs>
+                                        <linearGradient id="og13" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#D93611"/>
+                                            <stop offset="100%" style="stop-color:#F2811D"/>
+                                        </linearGradient>
+                                        <linearGradient id="tg13" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#32D9D9"/>
+                                            <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle cx="15" cy="15" r="12" fill="url(#og13)"/>
+                                    <circle cx="12" cy="12" r="3.5" fill="url(#tg13)"/>
+                                    <rect x="14" y="16" width="3" height="10" rx="1.5" fill="url(#tg13)" transform="rotate(45 16 21)"/>
+                                    <text x="35" y="20" font-family="DM Sans" font-size="12" fill="#000">physiotraq</text>
+                                </svg>
+                                <div class="flex gap-4 text-xs text-gray-500 ml-auto">
+                                    <span>Menu</span>
+                                    <span>Kore</span>
+                                    <span>Shopping</span>
+                                    <span>Chi siamo</span>
+                                </div>
+                            </div>
+                            <div class="h-32 bg-gray-200 flex items-center justify-center">
+                                <p class="text-gray-400 text-xs">[Placeholder: hero image]</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs text-center mt-4">[Placeholder: inserire screenshot reale]</p>
+                    </div>
+                    
+                    <!-- T-shirt -->
+                    <div class="card p-8">
+                        <p class="text-pt-teal text-sm font-medium mb-4">T-shirt brandizzata</p>
+                        <div class="bg-gray-800 rounded-lg p-8 flex items-center justify-center" style="aspect-ratio: 4/5;">
+                            <svg viewBox="0 0 100 120" class="w-24 h-auto">
+                                <circle cx="50" cy="45" r="30" fill="none" stroke="#fff" stroke-width="2"/>
+                                <circle cx="42" cy="37" r="9" fill="#fff"/>
+                                <rect x="47" y="50" width="7" height="25" rx="3.5" fill="#fff" transform="rotate(45 51 63)"/>
+                                <text x="50" y="105" text-anchor="middle" font-family="DM Sans" font-size="10" fill="#fff">physiotraq</text>
+                            </svg>
+                        </div>
+                        <p class="text-gray-400 text-xs text-center mt-4">[Placeholder: inserire foto reale]</p>
+                    </div>
+                    
+                    <!-- Packaging -->
+                    <div class="card p-8">
+                        <p class="text-pt-teal text-sm font-medium mb-4">Packaging di prodotto</p>
+                        <div class="rounded-lg p-8 flex items-center justify-center" style="background-color: #B8E0E0; aspect-ratio: 1;">
+                            <svg viewBox="0 0 150 180" class="w-32 h-auto">
+                                <defs>
+                                    <linearGradient id="og14" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#D93611"/>
+                                        <stop offset="100%" style="stop-color:#F2811D"/>
+                                    </linearGradient>
+                                    <linearGradient id="tg14" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#32D9D9"/>
+                                        <stop offset="100%" style="stop-color:#7EEAEA"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="75" cy="60" r="50" fill="url(#og14)"/>
+                                <circle cx="62" cy="47" r="14" fill="url(#tg14)"/>
+                                <rect x="70" y="62" width="12" height="40" rx="6" fill="url(#tg14)" transform="rotate(45 76 82)"/>
+                                <text x="75" y="150" text-anchor="middle" font-family="DM Sans" font-size="16" fill="#008B8B">physiotraq</text>
+                            </svg>
+                        </div>
+                        <p class="text-gray-400 text-xs text-center mt-4">[Placeholder: inserire foto reale]</p>
+                    </div>
+                    
+                    <!-- Product -->
+                    <div class="card p-8">
+                        <p class="text-pt-teal text-sm font-medium mb-4">Prodotto</p>
+                        <div class="bg-gray-100 rounded-lg p-8 flex items-center justify-center" style="aspect-ratio: 1;">
+                            <div class="w-32 h-32 bg-white rounded-full shadow-lg flex items-center justify-center">
+                                <svg viewBox="0 0 60 75" class="w-12 h-auto">
+                                    <circle cx="30" cy="30" r="22" fill="none" stroke="#ddd" stroke-width="2"/>
+                                    <circle cx="25" cy="25" r="6" fill="#ddd"/>
+                                    <rect x="28" y="33" width="5" height="18" rx="2.5" fill="#ddd" transform="rotate(45 31 42)"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs text-center mt-4">[Placeholder: inserire foto reale del prodotto Kore]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-16 px-8 bg-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-48 h-48 rounded-full opacity-30" style="background-color: #32D9D9; transform: translate(30%, -30%);"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-20" style="background-color: #F2811D; transform: translate(-30%, 30%);"></div>
+            
+            <div class="max-w-4xl mx-auto text-center relative z-10">
+                <p class="text-pt-teal font-medium tracking-widest">SAPERI & CO.</p>
+                <p class="text-gray-400 text-sm mt-2">PALAZZINA TUMINELLI, PIANO -1</p>
+                <p class="text-gray-400 text-sm">PIAZZALE ALDO MORO, 5</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Mobile menu toggle -->
+    <button onclick="document.querySelector('.sidebar').classList.toggle('open')" class="lg:hidden fixed bottom-6 right-6 z-50 bg-pt-teal text-white p-4 rounded-full shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Close mobile menu
+                    document.querySelector('.sidebar').classList.remove('open');
+                }
+            });
+        });
+
+        // Active nav link highlighting
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-gray-100', 'text-pt-teal', 'font-medium');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('bg-gray-100', 'text-pt-teal', 'font-medium');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

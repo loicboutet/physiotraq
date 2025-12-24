@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "PhysioTraq Admin" %></title>
+    <title><%= content_for(:title) || "PhysioTraq" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -59,6 +59,27 @@
       .btn-secondary:hover {
         background: var(--pt-teal);
       }
+      
+      .temperature-display {
+        font-size: 8rem;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--pt-turquoise);
+      }
+      
+      .temperature-display.warning {
+        color: var(--pt-alert-warning);
+      }
+      
+      .temperature-display.danger {
+        color: var(--pt-alert-danger);
+        animation: pulse 1s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
     </style>
   </head>
 
@@ -73,39 +94,32 @@
           </div>
           
           <nav class="space-y-1">
-            <%= link_to mockups_admin_dashboard_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8FAFA] hover:text-[#008B8B] transition-colors #{action_name == 'admin_dashboard' ? 'bg-[#E8FAFA] text-[#008B8B]' : ''}" do %>
+            <%= link_to mockups_operator_dashboard_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8F5F5] hover:text-[#008B8B] transition-colors #{action_name == 'operator_dashboard' ? 'bg-[#E8F5F5] text-[#008B8B]' : ''}" do %>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
               </svg>
               Dashboard
             <% end %>
             
-            <%= link_to mockups_admin_devices_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8FAFA] hover:text-[#008B8B] transition-colors #{action_name.include?('device') ? 'bg-[#E8FAFA] text-[#008B8B]' : ''}" do %>
+            <%= link_to mockups_operator_new_treatment_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8F5F5] hover:text-[#008B8B] transition-colors #{action_name == 'operator_new_treatment' ? 'bg-[#E8F5F5] text-[#008B8B]' : ''}" do %>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
               </svg>
-              Devices
+              New Treatment
             <% end %>
             
-            <%= link_to mockups_admin_team_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8FAFA] hover:text-[#008B8B] transition-colors #{action_name == 'admin_team' ? 'bg-[#E8FAFA] text-[#008B8B]' : ''}" do %>
+            <%= link_to mockups_operator_monitor_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8F5F5] hover:text-[#008B8B] transition-colors #{action_name == 'operator_monitor' ? 'bg-[#E8F5F5] text-[#008B8B]' : ''}" do %>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
               </svg>
-              Team
+              Live Monitor
             <% end %>
             
-            <%= link_to mockups_admin_treatments_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8FAFA] hover:text-[#008B8B] transition-colors #{action_name == 'admin_treatments' ? 'bg-[#E8FAFA] text-[#008B8B]' : ''}" do %>
+            <%= link_to mockups_operator_treatments_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8F5F5] hover:text-[#008B8B] transition-colors #{action_name.include?('treatment') && action_name != 'operator_new_treatment' ? 'bg-[#E8F5F5] text-[#008B8B]' : ''}" do %>
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
               </svg>
-              Treatments
-            <% end %>
-            
-            <%= link_to mockups_admin_billing_path, class: "flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-[#E8FAFA] hover:text-[#008B8B] transition-colors #{action_name == 'admin_billing' ? 'bg-[#E8FAFA] text-[#008B8B]' : ''}" do %>
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
-              </svg>
-              Billing
+              My Treatments
             <% end %>
           </nav>
         </div>
@@ -125,15 +139,15 @@
         <!-- Top bar -->
         <header class="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between">
           <h1 class="text-xl font-semibold text-gray-900">
-            <%= content_for(:page_title) || "Admin" %>
+            <%= content_for(:page_title) || "Operator" %>
           </h1>
           <div class="flex items-center gap-4">
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#E8FAFA] text-[#008B8B]">
-              License Owner
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-[#D93611] to-[#F2811D] text-white">
+              Operator
             </span>
             <div class="flex items-center gap-2">
-              <div class="w-8 h-8 rounded-full bg-gradient-to-r from-[#D93611] to-[#F2811D] flex items-center justify-center text-white text-sm font-medium">
-                JD
+              <div class="w-8 h-8 rounded-full bg-[#32D9D9] flex items-center justify-center text-white text-sm font-medium">
+                DR
               </div>
             </div>
           </div>

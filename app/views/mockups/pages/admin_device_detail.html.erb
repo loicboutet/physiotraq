@@ -1,0 +1,347 @@
+<% content_for :page_title, "Device Detail" %>
+
+<div class="space-y-6">
+  <!-- Header -->
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <%= link_to mockups_admin_devices_path, class: "text-gray-500 hover:text-gray-700" do %>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+      <% end %>
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D93611] to-[#F2811D] flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold text-gray-900">CoreTraQer005</h1>
+          <p class="text-gray-500">PT-2025-00123</p>
+        </div>
+      </div>
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-700">
+        <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+        Online
+      </span>
+    </div>
+    <div class="flex items-center gap-3">
+      <button class="inline-flex items-center gap-2 px-4 py-2 border-2 border-gray-200 text-gray-700 font-medium rounded-lg hover:border-[#32D9D9] hover:text-[#008B8B] transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+        </svg>
+        Edit
+      </button>
+      <button class="inline-flex items-center gap-2 px-4 py-2 border-2 border-red-200 text-red-600 font-medium rounded-lg hover:border-red-400 hover:bg-red-50 transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+        </svg>
+        Delete
+      </button>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Left Column -->
+    <div class="space-y-6">
+      <!-- Device Info -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+        <div class="px-6 py-4 border-b border-gray-100">
+          <h3 class="font-semibold text-gray-900">Device Information</h3>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex justify-between">
+            <span class="text-gray-500">Serial Number</span>
+            <span class="font-mono font-medium text-gray-900">PT-2025-00123</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500">MAC Address</span>
+            <span class="font-mono font-medium text-gray-900">A4:CF:12:8B:3D:E7</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-500">Firmware</span>
+            <div class="flex items-center gap-2">
+              <span class="font-medium text-gray-900">v2.1.3</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700">
+                Update Available
+              </span>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500">Registered</span>
+            <span class="font-medium text-gray-900">Nov 15, 2025</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-gray-500">Battery</span>
+            <div class="flex items-center gap-2">
+              <div class="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div class="w-3/4 h-full bg-green-500 rounded-full"></div>
+              </div>
+              <span class="font-medium text-gray-900">74%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assignment -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+        <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+          <h3 class="font-semibold text-gray-900">Assignment</h3>
+          <button class="text-sm text-[#008B8B] hover:text-[#32D9D9] font-medium">Change</button>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white text-lg font-medium">
+              JD
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900">John Doe</p>
+              <p class="text-sm text-gray-500">john.doe@example.com</p>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700 mt-1">
+                Operator
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WiFi Credentials -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+        <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+          <h3 class="font-semibold text-gray-900">WiFi Credentials</h3>
+          <button class="text-sm text-[#008B8B] hover:text-[#32D9D9] font-medium">Configure</button>
+        </div>
+        <div class="p-6 space-y-3">
+          <!-- Slot 1 - Configured -->
+          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-900">Hospital-WiFi</p>
+                <p class="text-xs text-gray-500">Slot 1</p>
+              </div>
+            </div>
+            <span class="text-xs text-green-600 font-medium">Configured</span>
+          </div>
+          
+          <!-- Slot 2 - Configured -->
+          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-900">Mobile-Hotspot</p>
+                <p class="text-xs text-gray-500">Slot 2</p>
+              </div>
+            </div>
+            <span class="text-xs text-green-600 font-medium">Configured</span>
+          </div>
+          
+          <!-- Slot 3 - Empty -->
+          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg opacity-50">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-500">Empty</p>
+                <p class="text-xs text-gray-400">Slot 3</p>
+              </div>
+            </div>
+            <span class="text-xs text-gray-400 font-medium">Not configured</span>
+          </div>
+          
+          <!-- Slot 4 - Empty -->
+          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg opacity-50">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-500">Empty</p>
+                <p class="text-xs text-gray-400">Slot 4</p>
+              </div>
+            </div>
+            <span class="text-xs text-gray-400 font-medium">Not configured</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column (2/3 width) -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Location -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+        <div class="px-6 py-4 border-b border-gray-100">
+          <h3 class="font-semibold text-gray-900">Approximate Location</h3>
+        </div>
+        <div class="p-6">
+          <div class="flex items-start gap-6">
+            <!-- Map placeholder -->
+            <div class="flex-1 h-40 bg-gray-100 rounded-lg flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100"></div>
+              <div class="relative text-center">
+                <svg class="w-8 h-8 text-[#D93611] mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <p class="text-sm text-gray-500">Map preview</p>
+              </div>
+            </div>
+            <!-- Location details -->
+            <div class="w-48 space-y-3">
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">City</p>
+                <p class="font-medium text-gray-900">Paris, France</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">IP Address</p>
+                <p class="font-mono text-sm text-gray-900">82.64.123.45</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">Last Updated</p>
+                <p class="text-sm text-gray-900">2 minutes ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistics -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm text-gray-500 mb-1">Total Treatments</p>
+          <p class="text-2xl font-bold text-gray-900">127</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm text-gray-500 mb-1">Total Time</p>
+          <p class="text-2xl font-bold text-gray-900">42h</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm text-gray-500 mb-1">Avg. Duration</p>
+          <p class="text-2xl font-bold text-gray-900">20 min</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm text-gray-500 mb-1">Success Rate</p>
+          <p class="text-2xl font-bold text-green-600">94%</p>
+        </div>
+      </div>
+
+      <!-- Recent Treatments -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+        <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+          <h3 class="font-semibold text-gray-900">Recent Treatments</h3>
+          <%= link_to mockups_admin_treatments_path, class: "text-sm text-[#008B8B] hover:text-[#32D9D9] font-medium" do %>
+            View All →
+          <% end %>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50 border-b border-gray-100">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Session</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Duration</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Max Temp</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                <th class="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4">
+                  <span class="font-mono text-sm text-gray-900">#20251224-143052</span>
+                </td>
+                <td class="px-6 py-4 text-gray-600">Today, 2:30 PM</td>
+                <td class="px-6 py-4 text-gray-900">15 min</td>
+                <td class="px-6 py-4">
+                  <span class="font-medium text-[#32D9D9]">38.9°C</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Completed</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <%= link_to mockups_operator_treatment_detail_path(id: 1), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium text-sm" do %>View<% end %>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4">
+                  <span class="font-mono text-sm text-gray-900">#20251224-103015</span>
+                </td>
+                <td class="px-6 py-4 text-gray-600">Today, 10:30 AM</td>
+                <td class="px-6 py-4 text-gray-900">12 min</td>
+                <td class="px-6 py-4">
+                  <span class="font-medium text-amber-500">39.2°C</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Completed</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <%= link_to mockups_operator_treatment_detail_path(id: 2), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium text-sm" do %>View<% end %>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4">
+                  <span class="font-mono text-sm text-gray-900">#20251223-161230</span>
+                </td>
+                <td class="px-6 py-4 text-gray-600">Yesterday, 4:12 PM</td>
+                <td class="px-6 py-4 text-gray-900">8 min</td>
+                <td class="px-6 py-4">
+                  <span class="font-medium text-red-500">40.1°C</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700">Aborted</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <%= link_to mockups_operator_treatment_detail_path(id: 3), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium text-sm" do %>View<% end %>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4">
+                  <span class="font-mono text-sm text-gray-900">#20251223-091045</span>
+                </td>
+                <td class="px-6 py-4 text-gray-600">Yesterday, 9:10 AM</td>
+                <td class="px-6 py-4 text-gray-900">18 min</td>
+                <td class="px-6 py-4">
+                  <span class="font-medium text-[#32D9D9]">38.5°C</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Completed</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <%= link_to mockups_operator_treatment_detail_path(id: 4), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium text-sm" do %>View<% end %>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-6 py-4">
+                  <span class="font-mono text-sm text-gray-900">#20251222-143522</span>
+                </td>
+                <td class="px-6 py-4 text-gray-600">Dec 22, 2:35 PM</td>
+                <td class="px-6 py-4 text-gray-900">14 min</td>
+                <td class="px-6 py-4">
+                  <span class="font-medium text-[#32D9D9]">38.7°C</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">Completed</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <%= link_to mockups_operator_treatment_detail_path(id: 5), class: "text-[#008B8B] hover:text-[#32D9D9] font-medium text-sm" do %>View<% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

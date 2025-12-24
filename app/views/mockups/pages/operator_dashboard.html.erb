@@ -1,0 +1,204 @@
+<% content_for :page_title, "My Dashboard" %>
+
+<div class="space-y-8">
+  <!-- Big CTA -->
+  <div class="bg-gradient-to-r from-[#D93611] via-[#D95F18] to-[#F2811D] rounded-2xl p-8 text-white">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h2 class="text-2xl font-bold mb-2">Ready to start a treatment?</h2>
+        <p class="text-white/80">Select a device and enter patient information to begin monitoring.</p>
+      </div>
+      <%= link_to mockups_operator_new_treatment_path, class: "inline-flex items-center gap-3 bg-white text-[#D93611] font-bold text-lg px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors shadow-lg" do %>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+        Start New Treatment
+      <% end %>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- My Devices -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+      <div class="px-6 py-4 border-b border-gray-100">
+        <h2 class="text-lg font-semibold text-gray-900">My Devices</h2>
+      </div>
+      <div class="divide-y divide-gray-100">
+        <!-- Device 1 - Ready -->
+        <div class="px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#D93611] to-[#F2811D] flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">CoreTraQer005</h3>
+              <p class="text-sm text-gray-500">PT-2025-00123</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+              <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
+              Online
+            </span>
+            <%= link_to mockups_operator_monitor_path, class: "text-sm font-medium text-[#008B8B] hover:text-[#32D9D9]" do %>
+              Monitor →
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Device 2 - In Use -->
+        <div class="px-6 py-4 flex items-center justify-between bg-blue-50/50">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#D93611] to-[#F2811D] flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">CoreTraQer006</h3>
+              <p class="text-sm text-gray-500">PT-2025-00124</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+              <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-1.5 animate-pulse"></span>
+              In Use
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Current Treatment (if any) -->
+    <div class="bg-white rounded-xl shadow-sm border-2 border-blue-200">
+      <div class="px-6 py-4 border-b border-blue-100 bg-blue-50">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+          <h2 class="text-lg font-semibold text-blue-900">Treatment in Progress</h2>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <p class="text-sm text-gray-500">Session</p>
+            <p class="font-mono text-sm text-gray-900">#20251224-153042-002</p>
+          </div>
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Patient</p>
+            <p class="font-medium text-gray-900">Anonymous</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 mb-6">
+          <div class="text-center p-4 bg-[#E8F5F5] rounded-xl">
+            <p class="text-sm text-[#008B8B] mb-1">Current Temp</p>
+            <p class="text-3xl font-bold text-[#32D9D9]">38.2°C</p>
+          </div>
+          <div class="text-center p-4 bg-gray-100 rounded-xl">
+            <p class="text-sm text-gray-500 mb-1">Duration</p>
+            <p class="text-3xl font-bold text-gray-900">00:05:23</p>
+          </div>
+        </div>
+
+        <%= link_to mockups_operator_monitor_path, class: "block w-full text-center py-3 px-4 bg-gradient-to-r from-[#D93611] to-[#F2811D] text-white font-semibold rounded-xl hover:shadow-lg transition-all" do %>
+          Resume Monitoring →
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Treatments -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+    <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+      <h2 class="text-lg font-semibold text-gray-900">Recent Treatments</h2>
+      <%= link_to "View all →", mockups_operator_treatments_path, class: "text-sm text-[#008B8B] hover:text-[#32D9D9]" %>
+    </div>
+    <div class="divide-y divide-gray-100">
+      <!-- Treatment 1 -->
+      <div class="px-6 py-4 flex items-center justify-between hover:bg-gray-50">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-gray-900">#20251224-143052-001</p>
+            <p class="text-sm text-gray-500">CoreTraQer005 • Today, 2:30 PM</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Duration</p>
+            <p class="font-medium text-gray-900">15 min</p>
+          </div>
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Max Temp</p>
+            <p class="font-medium text-[#32D9D9]">38.9°C</p>
+          </div>
+          <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+            Completed
+          </span>
+        </div>
+      </div>
+
+      <!-- Treatment 2 -->
+      <div class="px-6 py-4 flex items-center justify-between hover:bg-gray-50">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-gray-900">#20251224-103015-003</p>
+            <p class="text-sm text-gray-500">CoreTraQer005 • Today, 10:30 AM</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Duration</p>
+            <p class="font-medium text-gray-900">12 min</p>
+          </div>
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Max Temp</p>
+            <p class="font-medium text-amber-500">39.2°C</p>
+          </div>
+          <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+            Completed
+          </span>
+        </div>
+      </div>
+
+      <!-- Treatment 3 -->
+      <div class="px-6 py-4 flex items-center justify-between hover:bg-gray-50">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium text-gray-900">#20251223-161230-001</p>
+            <p class="text-sm text-gray-500">CoreTraQer006 • Yesterday, 4:12 PM</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Duration</p>
+            <p class="font-medium text-gray-900">8 min</p>
+          </div>
+          <div class="text-right">
+            <p class="text-sm text-gray-500">Max Temp</p>
+            <p class="font-medium text-red-500">40.1°C</p>
+          </div>
+          <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
+            Aborted
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

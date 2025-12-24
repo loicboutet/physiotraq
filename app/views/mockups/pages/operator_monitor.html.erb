@@ -1,0 +1,430 @@
+<% content_for :title, "Live Monitor - PhysioTraq" %>
+<% content_for :page_title, "Live Monitor" %>
+
+<% content_for :head do %>
+<style>
+  /* Wake Lock indicator */
+  .wake-lock-active {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 5px rgba(50, 217, 217, 0.5); }
+    to { box-shadow: 0 0 15px rgba(50, 217, 217, 0.8); }
+  }
+  
+  /* Temperature display styles */
+  .temp-display {
+    font-size: 10rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  @media (max-width: 768px) {
+    .temp-display {
+      font-size: 6rem;
+    }
+  }
+  
+  .temp-normal { color: #32D9D9; }
+  .temp-warning { color: #F59E0B; }
+  .temp-danger { 
+    color: #EF4444;
+    animation: pulse-danger 0.8s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-danger {
+    0%, 100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.85;
+      transform: scale(1.02);
+    }
+  }
+  
+  /* Chart styles */
+  .chart-grid-line {
+    stroke: #E5E7EB;
+    stroke-width: 1;
+  }
+  
+  .chart-threshold-39 {
+    stroke: #F59E0B;
+    stroke-width: 2;
+    stroke-dasharray: 8, 4;
+  }
+  
+  .chart-threshold-40 {
+    stroke: #EF4444;
+    stroke-width: 2;
+    stroke-dasharray: 8, 4;
+  }
+  
+  .chart-line {
+    fill: none;
+    stroke: #32D9D9;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  .chart-point {
+    fill: #32D9D9;
+    stroke: white;
+    stroke-width: 2;
+  }
+  
+  .chart-area {
+    fill: url(#tempGradient);
+    opacity: 0.3;
+  }
+  
+  /* Timer display */
+  .timer-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+  }
+  
+  /* Stop button */
+  .btn-stop {
+    background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+    transition: all 0.2s ease;
+  }
+  
+  .btn-stop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+  }
+  
+  .btn-stop:active {
+    transform: translateY(0);
+  }
+  
+  /* View toggle */
+  .view-toggle-btn {
+    transition: all 0.2s ease;
+  }
+  
+  .view-toggle-btn.active {
+    background: #32D9D9;
+    color: white;
+  }
+  
+  /* Status indicators */
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border-radius: 0.5rem;
+    border: 1px solid #E5E7EB;
+  }
+  
+  /* Reliability indicator */
+  .reliability-ring {
+    stroke-dasharray: 100;
+    stroke-dashoffset: calc(100 - var(--reliability, 98));
+    transform: rotate(-90deg);
+    transform-origin: center;
+  }
+</style>
+<% end %>
+
+<div class="space-y-6">
+  <!-- Session Header -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <!-- Device & Session Info -->
+      <div class="flex items-center gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#D93611] to-[#F2811D] flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-sm text-gray-500">Device</div>
+            <div class="font-semibold text-gray-900">CoreTraQer005</div>
+          </div>
+        </div>
+        
+        <div class="h-8 w-px bg-gray-200"></div>
+        
+        <div>
+          <div class="text-sm text-gray-500">Session</div>
+          <div class="font-mono text-sm text-gray-900">Anonymous #20251224-143052-001</div>
+        </div>
+        
+        <div class="h-8 w-px bg-gray-200 hidden sm:block"></div>
+        
+        <!-- Wake Lock indicator -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E8F5F5] text-[#008B8B] text-sm wake-lock-active">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+          Screen Active
+        </div>
+      </div>
+      
+      <!-- Timer -->
+      <div class="text-center">
+        <div class="text-sm text-gray-500 mb-1">Treatment Duration</div>
+        <div class="timer-display text-gray-900">00:12:34</div>
+      </div>
+      
+      <!-- Unit Toggle -->
+      <div class="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
+        <button class="view-toggle-btn active px-4 py-2 rounded-md font-medium text-sm">°C</button>
+        <button class="view-toggle-btn px-4 py-2 rounded-md font-medium text-sm text-gray-600 hover:bg-gray-200">°F</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Main Temperature Display -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+      <!-- Giant Temperature -->
+      <div class="text-center flex-1">
+        <div class="temp-display temp-normal" id="temp-value">
+          38.7<span class="text-6xl">°C</span>
+        </div>
+        
+        <!-- Reliability indicator -->
+        <div class="mt-4 flex items-center justify-center gap-3">
+          <div class="relative w-12 h-12">
+            <svg class="w-12 h-12" viewBox="0 0 36 36">
+              <circle cx="18" cy="18" r="15.9155" fill="none" stroke="#E5E7EB" stroke-width="3"/>
+              <circle cx="18" cy="18" r="15.9155" fill="none" stroke="#32D9D9" stroke-width="3" 
+                      stroke-dasharray="98, 100" stroke-linecap="round"
+                      style="transform: rotate(-90deg); transform-origin: center;"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center text-xs font-bold text-gray-700">98%</div>
+          </div>
+          <div class="text-sm text-gray-500">Signal Reliability</div>
+        </div>
+      </div>
+      
+      <!-- View Toggle Buttons -->
+      <div class="flex flex-col gap-2">
+        <button class="view-toggle-btn active flex items-center gap-2 px-4 py-3 rounded-lg border-2 border-[#32D9D9] bg-[#E8F5F5]">
+          <svg class="w-5 h-5 text-[#008B8B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
+          </svg>
+          <span class="font-medium text-[#008B8B]">Chart View</span>
+        </button>
+        <button class="view-toggle-btn flex items-center gap-2 px-4 py-3 rounded-lg border-2 border-gray-200 hover:border-gray-300">
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+          </svg>
+          <span class="font-medium text-gray-600">Numeric View</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Temperature Chart -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-semibold text-gray-900">Temperature Evolution</h3>
+      <div class="flex items-center gap-4 text-sm">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-0.5 bg-[#F59E0B]"></div>
+          <span class="text-gray-600">Warning (39°C)</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-0.5 bg-[#EF4444]"></div>
+          <span class="text-gray-600">Danger (40°C)</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="relative h-64">
+      <svg class="w-full h-full" viewBox="0 0 800 250" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="tempGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#32D9D9;stop-opacity:0.4" />
+            <stop offset="100%" style="stop-color:#32D9D9;stop-opacity:0.05" />
+          </linearGradient>
+        </defs>
+        
+        <!-- Y-axis labels background -->
+        <rect x="0" y="0" width="50" height="250" fill="white"/>
+        
+        <!-- Grid lines -->
+        <line x1="50" y1="25" x2="800" y2="25" class="chart-grid-line" stroke-dasharray="4,4"/>
+        <line x1="50" y1="75" x2="800" y2="75" class="chart-grid-line" stroke-dasharray="4,4"/>
+        <line x1="50" y1="125" x2="800" y2="125" class="chart-grid-line" stroke-dasharray="4,4"/>
+        <line x1="50" y1="175" x2="800" y2="175" class="chart-grid-line" stroke-dasharray="4,4"/>
+        <line x1="50" y1="225" x2="800" y2="225" class="chart-grid-line"/>
+        
+        <!-- Threshold lines -->
+        <!-- 40°C danger line -->
+        <line x1="50" y1="50" x2="800" y2="50" class="chart-threshold-40"/>
+        <text x="55" y="45" fill="#EF4444" font-size="11" font-weight="600">40°C</text>
+        
+        <!-- 39°C warning line -->
+        <line x1="50" y1="100" x2="800" y2="100" class="chart-threshold-39"/>
+        <text x="55" y="95" fill="#F59E0B" font-size="11" font-weight="600">39°C</text>
+        
+        <!-- Y-axis labels -->
+        <text x="25" y="30" fill="#6B7280" font-size="11" text-anchor="middle">41°</text>
+        <text x="25" y="80" fill="#6B7280" font-size="11" text-anchor="middle">40°</text>
+        <text x="25" y="130" fill="#6B7280" font-size="11" text-anchor="middle">39°</text>
+        <text x="25" y="180" fill="#6B7280" font-size="11" text-anchor="middle">38°</text>
+        <text x="25" y="230" fill="#6B7280" font-size="11" text-anchor="middle">37°</text>
+        
+        <!-- X-axis labels (last 15 minutes) -->
+        <text x="100" y="245" fill="#6B7280" font-size="10" text-anchor="middle">-15m</text>
+        <text x="200" y="245" fill="#6B7280" font-size="10" text-anchor="middle">-12m</text>
+        <text x="300" y="245" fill="#6B7280" font-size="10" text-anchor="middle">-9m</text>
+        <text x="400" y="245" fill="#6B7280" font-size="10" text-anchor="middle">-6m</text>
+        <text x="500" y="245" fill="#6B7280" font-size="10" text-anchor="middle">-3m</text>
+        <text x="600" y="245" fill="#6B7280" font-size="10" text-anchor="middle">-1m</text>
+        <text x="750" y="245" fill="#6B7280" font-size="10" text-anchor="middle">Now</text>
+        
+        <!-- Temperature area fill -->
+        <path class="chart-area" d="M100,200 L150,195 L200,190 L250,185 L300,180 L350,170 L400,165 L450,155 L500,145 L550,140 L600,135 L650,130 L700,125 L750,120 L750,225 L100,225 Z"/>
+        
+        <!-- Temperature line - simulating progressive rise from 37.5 to 38.7 -->
+        <path class="chart-line" d="M100,200 L150,195 L200,190 L250,185 L300,180 L350,170 L400,165 L450,155 L500,145 L550,140 L600,135 L650,130 L700,125 L750,120"/>
+        
+        <!-- Data points -->
+        <circle cx="100" cy="200" r="4" class="chart-point"/>
+        <circle cx="200" cy="190" r="4" class="chart-point"/>
+        <circle cx="300" cy="180" r="4" class="chart-point"/>
+        <circle cx="400" cy="165" r="4" class="chart-point"/>
+        <circle cx="500" cy="145" r="4" class="chart-point"/>
+        <circle cx="600" cy="135" r="4" class="chart-point"/>
+        <circle cx="700" cy="125" r="4" class="chart-point"/>
+        <circle cx="750" cy="120" r="6" class="chart-point" fill="#32D9D9" stroke="#008B8B" stroke-width="3"/>
+      </svg>
+    </div>
+  </div>
+  
+  <!-- Device Status Bar -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <!-- Status Indicators -->
+      <div class="flex flex-wrap items-center gap-4">
+        <!-- Battery -->
+        <div class="status-indicator">
+          <div class="relative">
+            <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h14a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1zm16 2v4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs text-gray-500">Battery</div>
+            <div class="font-semibold text-gray-900">74%</div>
+          </div>
+        </div>
+        
+        <!-- WiFi Signal -->
+        <div class="status-indicator">
+          <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+          </svg>
+          <div>
+            <div class="text-xs text-gray-500">WiFi</div>
+            <div class="font-semibold text-gray-900">-64 dBm</div>
+          </div>
+        </div>
+        
+        <!-- Firmware -->
+        <div class="status-indicator">
+          <svg class="w-6 h-6 text-[#32D9D9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+          </svg>
+          <div>
+            <div class="text-xs text-gray-500">Firmware</div>
+            <div class="font-semibold text-gray-900">v03.1.0</div>
+          </div>
+        </div>
+        
+        <!-- Last Update -->
+        <div class="status-indicator">
+          <svg class="w-6 h-6 text-[#32D9D9]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <div>
+            <div class="text-xs text-gray-500">Last Update</div>
+            <div class="font-semibold text-gray-900">2s ago</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- STOP Button -->
+      <button class="btn-stop text-white font-bold text-xl px-12 py-4 rounded-xl uppercase tracking-wider">
+        Stop Treatment
+      </button>
+    </div>
+  </div>
+</div>
+
+<%# 
+================================================================================
+DANGER VERSION - Temperature > 40°C with red pulsing animation
+================================================================================
+
+Replace the temperature display div with this version to show danger state:
+
+<div class="temp-display temp-danger" id="temp-value">
+  40.3<span class="text-6xl">°C</span>
+</div>
+
+And add this alert banner after the session header:
+
+<div class="bg-red-50 border-2 border-red-500 rounded-xl p-4 animate-pulse">
+  <div class="flex items-center gap-4">
+    <div class="flex-shrink-0">
+      <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+      </svg>
+    </div>
+    <div class="flex-1">
+      <h4 class="font-bold text-red-800 text-lg">⚠️ CRITICAL TEMPERATURE ALERT</h4>
+      <p class="text-red-700">Temperature has exceeded 40°C safety threshold. Immediate attention required!</p>
+    </div>
+    <button class="btn-stop text-white font-bold text-lg px-8 py-3 rounded-xl uppercase">
+      STOP NOW
+    </button>
+  </div>
+</div>
+
+Also update the chart line to show it crossing the danger threshold:
+<path class="chart-line" style="stroke: #EF4444;" d="M100,200 L150,190 L200,175 L250,160 L300,140 L350,120 L400,100 L450,80 L500,60 L550,50 L600,45 L650,40 L700,35 L750,30"/>
+
+================================================================================
+WARNING VERSION - Temperature between 39°C and 40°C
+================================================================================
+
+<div class="temp-display temp-warning" id="temp-value">
+  39.4<span class="text-6xl">°C</span>
+</div>
+
+Add this warning banner:
+
+<div class="bg-amber-50 border-2 border-amber-400 rounded-xl p-4">
+  <div class="flex items-center gap-4">
+    <div class="flex-shrink-0">
+      <svg class="w-8 h-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+      </svg>
+    </div>
+    <div class="flex-1">
+      <h4 class="font-bold text-amber-800">Temperature Warning</h4>
+      <p class="text-amber-700">Temperature has exceeded 39°C. Monitor closely.</p>
+    </div>
+  </div>
+</div>
+
+%>
